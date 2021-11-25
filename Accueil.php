@@ -6,24 +6,27 @@
   <link rel="stylesheet" href="Accueil.css">
   <script></script>
 </head>
+<body>
     <header>
         <h1>Bien Boire</h1>
         <nav>
             <ul>
-                <li><a href="&"> Recettes <a></li>
-                <li><a href="&"> Aliments <a></li>
-                <li><a href="&"> Panier <a></li>
-                <li><a href="&"> Compte <a></li>
+                <li><a href="#"> Recettes <a></li>
+                <li><a href="#"> Aliments <a></li>
+                <li><a href="#"> Panier <a></li>
+                <li><a href="#"> Compte <a></li>
             </ul>
         </nav>
     </header>
-    <body>
-        <nav>
-            <p>ezjfhzeifhzeifhzeifhzeiouzehdizehiouzehfoiuzhIUHFUEZHGZfuizeGFYUZEGFuyigUFGZHFBEZJHFBZEJBFZEKJBFKZBFZJ</p>
+
+    <div class="centre">
+        <nav id="menuAliments">
+            <p>ezjfhzeifhzJ</p>
         </nav>
         <section>
-            <p>ezjfhzeifhzeifhzeifhzeiouzehdizehiouzehfoiuzhIUHFUEZHGZfuizeGFYUZEGFuyigUFGZHFBEZJHFBZEJBFZEKJBFKZBFZJ</p>
+            <p>ezjfhzeifhze</p>
         </section>
-    </body>
+    </div>
+</body>
 
 </html>
