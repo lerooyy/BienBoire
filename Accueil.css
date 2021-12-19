@@ -1,13 +1,59 @@
-body {
- display: flex;
- flex-direction: column;
+* {
+    box-sizing: border-box;
 }
 
-.centre {
+html {
+    overflow-x: hidden;
+}
+
+body {
+ position: relative;
+ transform: translateX(0);
+ transition: transform 800ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+.menuPrincipal ul {
     display: flex;
     justify-content: space-around;
 }
 
-.centre section, .centre nav {
+.menuAliments {
+    position: absolute;
+    margin: auto;
+    width: 20vw;
+    padding-left: 0;
+    transform: translateX(-150%);
+    transition: transform 500ms;
+    background-color: red;
+    overflow-wrap: break-word;
+    hyphens: auto;
+}
+
+.contenuPrincipal {
+    position: absolute;
+    margin: 0 auto;
+    padding: 30px 20%;
     border: 2px black solid;
+    transform: translateX(0%);
+    transition: transform 500ms;
+}
+
+.openMenu {
+    cursor: pointer;
+}
+
+.menuAliments.invisible {
+    transform: translateX(0);
+}
+
+.contenuPrincipal.menu-visible {
+    transform: translateX(100%);
 }
