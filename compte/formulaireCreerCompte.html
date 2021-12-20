@@ -5,9 +5,11 @@
   <link rel="stylesheet" href="formulaireCreerCompte.css">
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script src="formulaireCreerCompte.js"></script>
+  <link href='https://css.gg/close.css' rel='stylesheet'>
 </head>
 <body>
     <div class="contenant">
+        <i class="gg-close"></i>
         <h1>Créer Un Compte</h1>
         <form action="" id="form" class="form">
             <div class="input">
@@ -47,6 +49,10 @@
             checkTaille(password, 8, 30);
             checkEmail(email);
             checkMDPcorrespond(password, c_password);
+        });
+
+        document.querySelector(".gg-close").addEventListener("click", (event) => {
+            window.location.href = "formulaireConnexion.html";
         });
     </script>
 </body>
