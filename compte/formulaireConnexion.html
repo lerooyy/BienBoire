@@ -3,10 +3,13 @@
 <head>
   <meta charset="utf-8">
   <link rel="stylesheet" href="formulaireConnexion.css">
+  <link href='https://css.gg/close.css' rel='stylesheet'>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="formulaireConnexion.js"></script>
 </head>
 <body>
     <div class="contenant">
+        <i class="gg-close"></i>
         <h1>Connexion</h1>
         <form action="" id="form" class="form">
             <div class="input">
@@ -32,6 +35,10 @@
 
         document.querySelector("#creer_compte").addEventListener("click", (event) => {
             window.location.href = "formulaireCreerCompte.html";
+        });
+
+        document.querySelector(".gg-close").addEventListener("click", (event) => {
+        window.location.href = "../index.php";
         });
     </script>
 </body>
