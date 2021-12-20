@@ -96,7 +96,7 @@ li {
 }
 
 .contenuPrincipal.menu-visible {
-    transform: translateX(100%);
+    transform: translateX(50%);
 }
 
 .menuAliments nav div {

@@ -45,6 +45,10 @@
             toggleAlimentSuivant("Aliment");
             toggleMenuAliments();
         }, false);
+
+        document.querySelector(".openMenu").addEventListener('click', (event) => {
+            recettesContenant("");
+        }, false);
     </script>
     <section class="contenuPrincipal">
     </section>
