@@ -8,6 +8,8 @@ html {
 
 body {
  position: relative;
+ margin: 0;
+ padding: 0;
  transform: translateX(0);
  transition: transform 800ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
@@ -32,7 +34,7 @@ li {
     padding-left: 0;
     transform: translateX(-150%);
     transition: transform 500ms;
-    background-color: red;
+    background-color: rgb(28, 31, 212);
     overflow-wrap: break-word;
     hyphens: auto;
 }

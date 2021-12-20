@@ -17,7 +17,7 @@ if ($parents == NULL || $parents == "") {
     $aliment_se = str_replace("'", "_", $aliment_se);
     $parents = '<em id="p_'.$aliment_se.'">'.$aliment.'</em>';;
     $interBaliseParent = $parents;
-} else if (str_contains($parents, $aliment)) {
+} else if (str_contains($parents, $aliment."<")) {
     /* On supprime la suite du code HTML dans les parents */
     $aliment_se = str_replace(" ", "_", $aliment);
     $aliment_se = str_replace("'", "_", $aliment_se);
