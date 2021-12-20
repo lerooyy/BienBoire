@@ -31,12 +31,10 @@
     <header class="baniere">
         <h1>Bien Boire</h1>
         <nav class="menuPrincipal">
-            <ul>
-                <li><div class="boutons_menuP openMenu">Aliments</div></li>
-                <li><div class="boutons_menuP b_recettes">Recettes</div></li>
-                <li><div class="boutons_menuP b_panier">Panier</div></li>
-                <li><div class="boutons_menuP b_compte">Compte</div></li>
-            </ul>
+            <div class="boutons_menuP openMenu">Aliments</div>
+            <div class="boutons_menuP b_recettes">Recettes</div>
+            <div class="boutons_menuP b_panier">Panier</div>
+            <div class="boutons_menuP b_compte">Compte</div>
         </nav>
     </header>
     <div class="menuAliments">
