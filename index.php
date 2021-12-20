@@ -33,9 +33,9 @@
         <nav class="menuPrincipal">
             <ul>
                 <li><div class="openMenu">Aliments</div></li>
-                <li><a href="#">Recettes<a></li>
-                <li><a href="#">Panier<a></li>
-                <li><a href="#">Compte<a></li>
+                <li><div class="b_recettes">Recettes</div></li>
+                <li><div class="b_panier">Panier</div></li>
+                <li><div class="b_compte">Compte</div></li>
             </ul>
         </nav>
     </header>
@@ -48,10 +48,12 @@
             toggleMenuAliments();
         }, false);
     </script>
-    <div class="contenuPrincipal">
-        <section>
-            <?php echo "<p>OKfff</p>"  ?>
-        </section>
-    </div>
+    <section class="contenuPrincipal">
+    </section>
+    <script type="text/javascript">
+        document.querySelector(".b_compte").addEventListener('click', (event) => {
+            window.location.href = "compte/formulaireConnexion.html";
+        }, false);
+    </script>
 </body>
 </html>
