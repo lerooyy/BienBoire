@@ -47,10 +47,12 @@ if ($elements == NULL || $elements == "") {
     $scriptJs = $scriptJs.'document.querySelector("#p_Aliment").addEventListener("click", (event) => {
         toggleAlimentSuivant("Aliment");
     }, false);';
+
 } else if ($elements == "Aliment") {
     $scriptJs = $scriptJs.'document.querySelector("#p_Aliment").addEventListener("click", (event) => {
         toggleAlimentSuivant("Aliment");
     }, false);';
+
 } else {
     $tabE = explode(" > ", $elements);
     foreach($tabE as $value) {
@@ -65,7 +67,7 @@ if ($elements == NULL || $elements == "") {
     $aliment_se = str_replace("'", "_", $aliment_se);
     $scriptJs = $scriptJs.'document.querySelector("#p_'.$aliment_se.'").addEventListener("click", (event) => {
         toggleAlimentSuivant("'.$aliment.'");
-    }, false);';    
+    }, false);';
 }
 
 
@@ -91,13 +93,17 @@ foreach ($Hierarchie as $key => $value) {
  * de l'aliment et on associe à chaque sous-aliment une fonction pour
  * accéder à ses sous-aliments
  */
-$menuHTML = $menuHTML.'<nav><ul>';
+$menuHTML = $menuHTML.'<nav><ul class="openMenu">';
 foreach($tabAliments as $value) {
     $value_sans_espace = str_replace(" ", "_", $value);
     $value_sans_espace = str_replace("'", "_", $value_sans_espace);
     $menuHTML = $menuHTML.'<li><div id="'.$value_sans_espace.'">'.$value.'</div></li>';
     $scriptJs = $scriptJs.'document.querySelector("#'.$value_sans_espace.'").addEventListener("click", (event) => {
         toggleAlimentSuivant("'.$value.'");
+    }, false);';
+
+    $scriptJs = $scriptJs.'document.querySelector("#'.$value_sans_espace.'").addEventListener("click", (event) => {
+        recettesContenant("'.$value.'"); 
     }, false);';
 }
 

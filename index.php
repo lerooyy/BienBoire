@@ -28,7 +28,7 @@
   </script>
 </head>
 <body>
-    <header>
+    <header class="baniere">
         <h1>Bien Boire</h1>
         <nav class="menuPrincipal">
             <ul>
@@ -46,6 +46,10 @@
         document.querySelector(".openMenu").addEventListener('click', (event) => {
             toggleAlimentSuivant("Aliment");
             toggleMenuAliments();
+        }, false);
+
+        document.querySelector(".openMenu").addEventListener('click', (event) => {
+            recettesContenant("");
         }, false);
     </script>
     <section class="contenuPrincipal">

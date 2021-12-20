@@ -33,3 +33,13 @@ function toggleAlimentSuivant(aliment) {
     });
 
 }
+
+function recettesContenant(aliment){
+    var contenu = document.querySelector(".contenuPrincipal");
+    $.post('recettes.php', {
+        'aliment':  aliment
+    }, function(data) {
+        $('.contenuPrincipal').html(data);
+    });
+    
+}
