@@ -28,7 +28,7 @@
   </script>
 </head>
 <body>
-    <header>
+    <header class="baniere">
         <h1>Bien Boire</h1>
         <nav class="menuPrincipal">
             <ul>
