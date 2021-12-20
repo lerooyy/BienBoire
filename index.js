@@ -24,13 +24,12 @@ function toggleMenuAliments() {
  */
 function toggleAlimentSuivant(aliment) {
 
-    var textHtmlParent = document.querySelector(".parent");
-    textHtmlParent.innerHTML = textHtmlParent.innerHTML + '<em>'+aliment+' > </em>';
-    //console.log(textHtmlParent);
-
     $.post('menuAliments.php', {
-        'aliment':  aliment
+        'aliment':  aliment,
+        'parents': document.querySelector(".parent").innerHTML,
+        'elements': document.querySelector(".parent").textContent
     }, function(data) {
-        $('.menuAliments_nav').html(data);
+        $('.menuAliments').html(data);
     });
+
 }

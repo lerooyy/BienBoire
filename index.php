@@ -40,9 +40,7 @@
         </nav>
     </header>
     <div class="menuAliments">
-        <div class="parent"></div>
-        <nav class="menuAliments_nav">
-        </nav>
+    <div class="parent"></div>
     </div>
     <script type="text/javascript">
         document.querySelector(".openMenu").addEventListener('click', (event) => {
