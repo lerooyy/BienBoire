@@ -63,3 +63,13 @@ li {
 .contenuPrincipal.menu-visible {
     transform: translateX(100%);
 }
+
+.boutons_menuP {
+    border: 2px black solid;
+    border-radius: 5px;
+    padding: 5px
+}
+
+.boutons_menuP:hover {
+    background-color: cadetblue;
+}
