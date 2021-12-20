@@ -79,16 +79,12 @@ li {
 
 .contenuPrincipal {
     position: absolute;
-    margin: 0 auto;
+    margin: 0;
     padding: 30px 20%;
     border: 2px rgb(30, 173, 37) solid;
-    transform: translateX(0%);
-    transition: transform 500ms;
+    width: 100vw;
+    transition: transform 500ms, width 500ms;
     height: 100%;
-}
-
-.subCategories{
-    cursor: pointer;
 }
 
 .menuAliments.invisible {
@@ -96,7 +92,8 @@ li {
 }
 
 .contenuPrincipal.menu-visible {
-    transform: translateX(50%);
+    transform: translateX(20vw);
+    width: 80vw;
 }
 
 .menuAliments nav div {
