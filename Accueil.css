@@ -50,6 +50,10 @@ li {
     cursor: pointer;
 }
 
+.subCategories{
+    cursor: pointer;
+}
+
 .menuAliments.invisible {
     transform: translateX(0);
 }
