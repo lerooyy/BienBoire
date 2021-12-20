@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="formulaireCreerCompte.css">
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="formulaireCreerCompte.js"></script>
+</head>
+<body>
+    <div class="contenant">
+        <h1>Créer Un Compte</h1>
+        <form action="" id="form" class="form">
+            <div class="input">
+                <label form="Nom d'Utilisateur">Nom d'Utilisateur</label>
+                <input type="text" name="Nom d'Utilisateur" id="username" placeholder="Nom d'Utilisateur" autocomplete="off" />
+                <small>Message Erreur</small>
+            </div>
+            <div class="input" >
+                <label for="Email">Email</label>
+                <input type="text" name="Email" id="email" placeholder="Email" autocomplete="off" />
+                <small>Message Erreur</small>
+            </div>
+            <div class="input">
+                <label for="Mot de Passe">Mot de Passe</label>
+                <input type="password" name="Mot de Passe" id="password" placeholder="Mot De Passe" />
+                <small>Message Erreur</small>
+            </div>
+            <div class="input">
+                <label for="Confirmer Mot de Passe">Confirmer Mot De Passe</label>
+                <input type="password" name="Confirmer Mot de Passe" id="c-password" placeholder="Confirmer Mot de Passe" />
+                <small>Message Erreur</small>
+            </div>
+            <button>Créer Compte</button>
+        </form>
+    </div>
+    <script>
+        form.addEventListener("submit", (event) => {
+            var form = document.querySelector("#form");
+            var username = document.querySelector("#username");
+            var email = document.querySelector("#email");
+            var password = document.querySelector("#password");
+            var c_password = document.querySelector("#c-password");
+            event.preventDefault();
+
+            checkRequis([username, email, password, c_password]);
+            checkTaille(username, 4, 20);
+            checkTaille(password, 8, 30);
+            checkEmail(email);
+            checkMDPcorrespond(password, c_password);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="formulaireConnexion.css">
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+</head>
+<body>
+    <div class="contenant">
+        <h1>Connexion</h1>
+        <form action="" id="form" class="form">
+            <div class="input">
+                <label form="Nom d'Utilisateur">Nom d'Utilisateur</label>
+                <input type="text" name="Nom d'Utilisateur" id="username" placeholder="Nom d'Utilisateur" autocomplete="off" />
+                <small>Message Erreur</small>
+            </div>
+            <div class="input">
+                <label for="Mot de Passe">Mot de Passe</label>
+                <input type="password" name="Mot de Passe" id="password" placeholder="Mot De Passe" />
+                <small>Message Erreur</small>
+            </div>
+            <div class="boutons">
+                <button id="connexion">Connexion</button>
+                <button id="creer_compte">Créer un compte</button>
+            </div>
+        </form>
+    </div>
+    <script>
+        document.querySelector("#form").addEventListener("submit", (event) => {
+            event.preventDefault();
+        });
+
+        document.querySelector("#creer_compte").addEventListener("click", (event) => {
+            window.location.href = "formulaireCreerCompte.html";
+        });
+    </script>
+</body>
+</html>
