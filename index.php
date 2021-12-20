@@ -5,24 +5,7 @@
   <title>Bien Boire</title>
   <link rel="stylesheet" href="Accueil.css">
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-  <script type="text/javascript">
-    function toggleMenuAliments() {
-        var menu = document.querySelector(".menuAliments");
-        if (menu.classList.contains("invisible")) {
-            menu.classList.remove("invisible");
-        } else {
-            menu.classList.add("invisible");
-        }
-
-        var container = document.querySelector(".contenuPrincipal");
-        if (container.classList.contains("menu-visible")) {
-            container.classList.remove("menu-visible");
-        } else {
-            container.classList.add("menu-visible");
-        }
-    }
-
-    </script>
+  <script src="index.js"></script>
   <?php include 'Donnees.inc.php' ?>
 </head>
 <body>
