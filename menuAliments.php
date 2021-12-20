@@ -27,7 +27,7 @@ if ($parents == NULL || $parents == "") {
     $interBaliseParent = $parents;
 
     /* Pareil dans elements */
-    if ($aliment != "Aliment") {
+    if (strlen($elements) > 7) {
         $pos = strpos($elements, ' > '.$aliment);
         $elements = substr($elements, 0, $pos);
     }
