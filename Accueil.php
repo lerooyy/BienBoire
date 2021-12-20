@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="fr">
-<head>
+<head> 
   <meta charset="utf-8">
   <title>Bien Boire</title>
   <link rel="stylesheet" href="Accueil.css">
@@ -22,6 +22,25 @@
         }
     }
 
+    function createCookie(name, value, days) {
+    var expires;
+      
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        expires = "; expires=" + date.toGMTString();
+    }
+    else {
+        expires = "";
+    }
+      
+    document.cookie = escape(name) + "=" + 
+        escape(value) + expires + "; path=/";
+}
+
+    function subMenuAliments(){
+        createCookie("fruitCookie",'Fruit', "1");
+    }
     </script>
   <?php include 'Donnees.inc.php' ?>
 </head>
@@ -50,7 +69,7 @@
             }
         }
 
-        $menuHTML = '<ul>';
+        $menuHTML = '<ul class="subCategories">';
         foreach($tabAliments as $value) {
             $menuHTML = $menuHTML.'<li><a href="#">'.$value.'<a></li>';
         }
@@ -60,9 +79,39 @@
         echo $menuHTML;
         ?>
     </nav>
+    <nav>
+    <?php
+
+        $tabAliments2 = array(); 
+        foreach ($Hierarchie as $key => $value) {
+            foreach ($value as $k => $v) {
+                //if ($k == 'super-categorie') {
+                    foreach($v as $s => $c){
+                        if($s == 'super-categorie' && $c == 'Fruit'){ //$_COOKIE["fruitCookie"]
+                            $tabAliments2 = $key;
+                        }
+                    }
+                //}
+            }
+        }
+
+        $menuHTML = '<ul class="subCategories">';
+        foreach($tabAliments2 as $value) {
+            $menuHTML = $menuHTML.'<li><a href="#">'.$value.'<a></li>';
+        }
+
+        $menuHTML = $menuHTML.'</ul>';
+
+        echo $menuHTML;
+        ?>
+    </nav>
+
     <script type="text/javascript">
         document.querySelector(".openMenu").addEventListener('click', (event) => {
                 toggleMenuAliments();
+        }, false);
+        document.querySelector(".subCategories").addEventListener('click', (event) => {
+                subMenuAliments();
         }, false);
     </script>
     <div class="contenuPrincipal">
