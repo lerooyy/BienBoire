@@ -93,11 +93,11 @@ foreach ($Hierarchie as $key => $value) {
  * de l'aliment et on associe à chaque sous-aliment une fonction pour
  * accéder à ses sous-aliments
  */
-$menuHTML = $menuHTML.'<nav><ul class="openMenu">';
+$menuHTML = $menuHTML.'<nav>';
 foreach($tabAliments as $value) {
     $value_sans_espace = str_replace(" ", "_", $value);
     $value_sans_espace = str_replace("'", "_", $value_sans_espace);
-    $menuHTML = $menuHTML.'<li><div id="'.$value_sans_espace.'">'.$value.'</div></li>';
+    $menuHTML = $menuHTML.'<div id="'.$value_sans_espace.'">'.$value.'</div>';
     $scriptJs = $scriptJs.'document.querySelector("#'.$value_sans_espace.'").addEventListener("click", (event) => {
         toggleAlimentSuivant("'.$value.'");
     }, false);';
@@ -107,7 +107,7 @@ foreach($tabAliments as $value) {
     }, false);';
 }
 
-$menuHTML = $menuHTML.'</ul></nav>';
+$menuHTML = $menuHTML.'</nav>';
 $scriptJs = $scriptJs.'</script>';
 
 echo $menuHTML;
