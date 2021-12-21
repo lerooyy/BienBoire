@@ -103,7 +103,7 @@ foreach($tabAliments as $value) {
     }, false);';
 
     $scriptJs = $scriptJs.'document.querySelector("#'.$value_sans_espace.'").addEventListener("click", (event) => {
-        recettesContenant("'.$value.'"); 
+        recettesContenant("'.$value.'", "'.$aliment.'");  
     }, false);';
 }
 

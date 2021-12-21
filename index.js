@@ -34,10 +34,11 @@ function toggleAlimentSuivant(aliment) {
 
 }
 
-function recettesContenant(aliment){
-    var contenu = document.querySelector(".contenuPrincipal");
+function recettesContenant(aliment, typeIngredient){
+    //var contenu = document.querySelector(".contenuPrincipal");
     $.post('recettes.php', {
-        'aliment':  aliment
+        'aliment':  aliment,
+        'typeIngredient': typeIngredient
     }, function(data) {
         $('.contenuPrincipal').html(data);
     });

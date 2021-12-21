@@ -2,8 +2,37 @@
 include 'Donnees.inc.php';
 
 $aliment = $_POST['aliment'];
+$typeIngredient = $_POST['typeIngredient']; //inutile pour le moment
 
-//$menuHTML = '<ul>';
+$tabIngredientsConcernés = array();
+
+$ingredient = $aliment;
+array_push($tabIngredientsConcernés, $aliment);
+foreach($Hierarchie as $key => $value){
+    if($key == $ingredient){
+        foreach($value as $k => $v){
+            if($k = 'sous-categorie'){
+                foreach($v as $i => $ing){
+                    array_push($tabIngredientsConcernés, $ing);
+                }
+            }
+        }
+    }
+}
+
+/*foreach($Hierarchie as $key => $value){
+    foreach($tabIngredientsConcernés as $ingre){
+        if($key == $ingre){
+            foreach($value as $k => $v){
+                if($k = 'sous-categorie'){
+                    foreach($v as $i => $ing){
+                        array_push($tabIngredientsConcernés, $ing);
+                    }
+                }   
+            }
+        }
+    }
+}*/
 
 $tabRecettesNum = array();
 foreach ($Recettes as $key => $value) {
@@ -12,8 +41,10 @@ foreach ($Recettes as $key => $value) {
             //$menuHTML = $menuHTML.'<li><div id="zz">'.$v.'</div></li>';
             foreach($v as $i => $ing){
                 //$menuHTML = $menuHTML.'<li><div id="zz">'.$ing.'</div></li>';
-                if($ing == $aliment){ //aliment donné en paramètre de recettesContenant
-                    array_push($tabRecettesNum, $key);
+                foreach($tabIngredientsConcernés as $ingre){
+                    if($ing == $ingre){
+                        array_push($tabRecettesNum, $key);
+                    }
                 }
             }
         }
