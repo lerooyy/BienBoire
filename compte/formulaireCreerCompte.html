@@ -13,13 +13,62 @@
         <h1>Créer Un Compte</h1>
         <form action="" id="form" class="form">
             <div class="input">
-                <label form="Nom d'Utilisateur">Nom d'Utilisateur</label>
-                <input type="text" name="Nom d'Utilisateur" id="username" placeholder="Nom d'Utilisateur" autocomplete="off" />
+                <label for="user_id">Nom d'Utilisateur : </label>
+                <input type="text" name="user_id" id="user_id" placeholder="ex : JohnDoe1000" autocomplete="off" />
+                <small>Message Erreur</small>
+            </div>
+            <div class="input">
+                <label for="nom">Nom : </label>
+                <input type="text" name="nom" id="nom" placeholder="Doe" autocomplete="off" />
+                <small>Message Erreur</small>
+            </div>
+            <div class="input">
+                <label for="prenom">Prénom : </label>
+                <input type="text" name="prenom" id="prenom" placeholder="John" autocomplete="off" />
+                <small>Message Erreur</small>
+            </div>
+            <div class="inpu">
+                <label for="sexe">Sexe : </label>
+                <div class="sexe">
+                    <div>
+                    <input type="radio" class="radio_b" name="sexe" id="r_homme" value="homme" checked/>
+                    <label for="r_homme">Homme</label>
+                    </div>
+                    <div>
+                    <input type="radio" class="radio_b" name="sexe" id="r_femme" value="femme"/>
+                    <label for="r_femme">Femme</label>
+                </div>
+                </div>
+            </div>
+            <div class="input">
+                <label for="d_naissance">Date de Naissance : </label>
+                <input type="date" name="d_naissance" id="d_naissance" />
+            </div>
+            <div class="input" >
+                <label for="adresse">Adresse : </label>
+                <input type="text" name="adresse" id="adresse" placeholder="ex : 3 Rue Général Leclerc" autocomplete="true" />
+                <small>Message Erreur</small>
+            </div>
+            <div class="input ville_cp" >
+                <div class="code_postal">
+                    <label for="code_postal">Code Postal : </label>
+                    <input type="text" name="code_postal" id="code_postal" placeholder="ex : 54000" autocomplete="off" />
+                    <small>Message Erreur</small>
+                </div>
+                <div class="ville">
+                    <label for="ville">Ville : </label>
+                    <input type="text" name="ville" id="ville" placeholder="ex : Nancy" autocomplete="off" />
+                    <small>Message Erreur</small>
+                </div>
+            </div>
+            <div class="input" >
+                <label for="phone">Téléphone : </label>
+                <input type="tel" name="phone" id="phone" pattern="[0-9]{10}"/>
                 <small>Message Erreur</small>
             </div>
             <div class="input" >
                 <label for="Email">Email</label>
-                <input type="text" name="Email" id="email" placeholder="Email" autocomplete="off" />
+                <input type="text" name="Email" id="email" placeholder="ex : johndoe@gmail.com" autocomplete="off" />
                 <small>Message Erreur</small>
             </div>
             <div class="input">
@@ -38,22 +87,30 @@
     <script>
         form.addEventListener("submit", (event) => {
             var form = document.querySelector("#form");
-            var username = document.querySelector("#username");
+            var user_id = document.querySelector("#user_id");
             var email = document.querySelector("#email");
             var password = document.querySelector("#password");
             var c_password = document.querySelector("#c-password");
             event.preventDefault();
-
-            checkRequis([username, email, password, c_password]);
-            checkTaille(username, 4, 20);
+    
+            checkRequis([user_id, email, password, c_password]);
+            checkTaille(user_id, 4, 20);
             checkTaille(password, 8, 30);
             checkEmail(email);
             checkMDPcorrespond(password, c_password);
         });
-
+    
         document.querySelector(".gg-close").addEventListener("click", (event) => {
             window.location.href = "formulaireConnexion.html";
         });
+        
+        var date = new Date();
+        var dd = String(date.getDate()).padStart(2, '0');
+        var mm = String(date.getMonth() + 1).padStart(2, '0');
+        var yyyy = date.getFullYear()
+        date = yyyy+"-"+mm+"-"+dd;
+        document.querySelector("#d_naissance").value = date;
+        document.querySelector("#d_naissance").max = date;
     </script>
 </body>
 </html>
