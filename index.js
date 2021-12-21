@@ -46,5 +46,36 @@ function recettesContenant(aliment, typeIngredient){
     }, function(data) {
         $('.contenuPrincipal').html(data);
     });
-    
+}
+
+
+/**
+ * Permet de créer un cookie
+ * @param {*} nom
+ * @param {*} valeur
+ * @param {*} jours
+ */
+function createCookie(nom, valeur, jours) {
+    var expires;
+
+    if (jours) {
+        var date = new Date();
+        date.setTime(date.getTime() + (jours * 24 * 60 * 60 * 1000));
+        expires = "; expires=" + date.toGMTString();
+    }
+    else {
+        expires = "";
+    }
+
+    document.cookie = nom + "=" + 
+        valeur + expires + "; path=/";
+}
+
+
+/**
+ * Permet d'ajouter une recette dans un cookie
+ * @param {*} recette
+ */
+function ajouterRecette(recette){
+    createCookie(recette+"1", recette, 1);
 }

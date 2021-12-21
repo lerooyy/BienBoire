@@ -56,6 +56,10 @@
         document.querySelector(".b_compte").addEventListener('click', (event) => {
             window.location.href = "compte/formulaireConnexion.html";
         }, false);
+
+        document.querySelector(".b_panier").addEventListener('click', (event) => {
+            window.location.href = "panier/panier.php";
+        }, false);
     </script>
 </body>
 </html>
