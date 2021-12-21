@@ -130,3 +130,8 @@ li {
 .parent em:hover {
     text-decoration: underline;
 }
+
+.recette {
+    padding: 20px;
+    background-color: #c07e27;
+}

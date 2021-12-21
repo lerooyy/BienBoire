@@ -6,7 +6,6 @@ $typeIngredient = $_POST['typeIngredient']; //inutile pour le moment
 
 $tabIngredientsConcernés = array();
 
-$menuHTML = '<ul>';
 
 $ingredient = $aliment;
 array_push($tabIngredientsConcernés, $aliment);
@@ -60,30 +59,47 @@ foreach ($Recettes as $key => $value) {
 }
 
 $tabRecettes = array();
+$tabRecettesPartie = array();
 foreach($Recettes as $key => $value){
     foreach($value as $k => $v){
         if($k != 'index'){
             $foo = false;
+            $recetteComplete = "";
             foreach($tabRecettesNum as $num){
                 if($key == $num){
-                    foreach($tabRecettes as $recette){
+                    foreach($tabRecettesPartie as $recette){
                         if($recette == $v){
                             $foo = true;
                         }
                     }
                     if(!$foo){
-                        array_push($tabRecettes, $v);
+                        $recetteComplete = $recetteComplete.$v;
+                        array_push($tabRecettesPartie, $v);
+                        //array_push($tabRecettes, $v);
                     }
                 }
             }
+            array_push($tabRecettes, $recetteComplete);
         }
     }
 }
 
 $scriptJs = '<script type="text/javascript">';
-//$menuHTML = '<ul>';
+$menuHTML = '<ul>';
+$cpt = 0;
 foreach($tabRecettes as $value) {
-    $menuHTML = $menuHTML.'<li><div id="'.$value.'">'.$value.'</div></li>';
+    if($value != null && $value != ""){
+    if($cpt == 0){
+        $menuHTML = $menuHTML.'<div class="recette">';
+    }
+    $menuHTML = $menuHTML.'<li><div>'.$value.'</div></li>';
+    $cpt++;
+    if($cpt == 3){
+        $cpt=0;
+        $menuHTML = $menuHTML.'</div>';
+    }
+    }
+    
     /*$scriptJs = $scriptJs.'document.querySelector("#'.$value.'").addEventListener("click", (event) => {
         recettesContenant("'.$value.'");
     }, false);';*/
