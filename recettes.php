@@ -99,7 +99,7 @@ foreach($Recettes as $key => $value){
 $imageBoisson;
 
 /**
- * On affiche les recettes
+ * On affiche les recettes et les images (si elles existent pour la boisson donnée)
  */
 $scriptJs = '<script type="text/javascript">';
 $menuHTML = '<ul>';
@@ -114,7 +114,7 @@ foreach($tabRecettes as $value) {
         $imageBoisson = str_replace(" ", "_", $value);
         $imageBoisson = 'Photos/'.$imageBoisson.'.jpg';
         if(is_file($imageBoisson)){
-            $menuHTML = $menuHTML.'<img src='.$imageBoisson.'/>';
+            $menuHTML = $menuHTML.'<img class="imageBoisson" src='.$imageBoisson.'/>';
         }
     }else{
         $menuHTML = $menuHTML.'<li><div>'.$value.'</div></li>';

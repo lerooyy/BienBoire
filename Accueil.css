@@ -129,3 +129,8 @@ li {
     font-weight: bold;
     padding-bottom: 10px;
 }
+
+.imageBoisson{
+    height: 200px;
+    width: auto;
+}
