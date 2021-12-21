@@ -13,15 +13,16 @@
         <h1>Connexion</h1>
         <form action="" id="form" class="form">
             <div class="input">
-                <label form="Nom d'Utilisateur">Nom d'Utilisateur</label>
-                <input type="text" name="Nom d'Utilisateur" id="username" placeholder="Nom d'Utilisateur" autocomplete="off" />
+                <label form="user_id">Nom d'Utilisateur</label>
+                <input type="text" name="user_id" id="user_id" placeholder="Nom d'Utilisateur" autocomplete="off" />
                 <small>Message Erreur</small>
             </div>
             <div class="input">
-                <label for="Mot de Passe">Mot de Passe</label>
-                <input type="password" name="Mot de Passe" id="password" placeholder="Mot De Passe" />
+                <label for="mdp">Mot de Passe</label>
+                <input type="password" name="mdp" id="mdp" placeholder="Mot De Passe" />
                 <small>Message Erreur</small>
             </div>
+            <strong class="erreur_co">Connexion impossible : Identifiant ou Mot de Passe Incorrect</strong>
             <div class="boutons">
                 <button id="connexion">Connexion</button>
                 <button id="creer_compte">Créer un compte</button>
@@ -38,7 +39,11 @@
         });
 
         document.querySelector(".gg-close").addEventListener("click", (event) => {
-        window.location.href = "../index.php";
+            window.location.href = "../index.php";
+        });
+
+        document.querySelector("#connexion").addEventListener("click", (event) => {
+            verifierConnexion();
         });
     </script>
 </body>

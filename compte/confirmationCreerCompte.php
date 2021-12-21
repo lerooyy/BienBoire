@@ -37,7 +37,7 @@ if (empty($user_id)) {
     $confirmation = false;
 } else {
     /* On check dans la base de donnée si l'utilisateur existe */
-    $stmt = mysqli_prepare($bdd, "SELECT user_id FROM Utilisateurs WHERE nom=?;");
+    $stmt = mysqli_prepare($bdd, "SELECT user_id FROM Utilisateurs WHERE user_id=?;");
 
     if ($stmt) {
         mysqli_stmt_bind_param($stmt, "s", $user_id);

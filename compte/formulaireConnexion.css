@@ -123,3 +123,14 @@ button:hover {
 .gg-close:hover {
     transform: scale(1.5);
 }
+
+.erreur_co {
+    visibility: hidden;
+    display: block;
+    margin: 0 10px 10px 10px;
+    color: rgb(192, 25, 39);
+}
+
+.erreur_co.visible {
+    visibility: visible;
+}
