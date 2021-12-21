@@ -81,7 +81,7 @@ foreach($Recettes as $key => $value){
             foreach($tabRecettesNum as $num){
                 if($key == $num){
                     foreach($tabRecettesPartie as $partie){
-                        if($partie == $v && $k=='titre'){
+                        if($partie == $v && !str_contains($partie, "bacardi")){ //solution temporaire, puisque les 2 recettes "Bacardi" ont la même liste d'ingrédient
                             $foo = true;
                         }
                     }
@@ -116,6 +116,13 @@ foreach($tabRecettes as $value) {
         if(is_file($imageBoisson)){
             $menuHTML = $menuHTML.'<img class="imageBoisson" src='.$imageBoisson.'/>';
         }
+    }else if($cpt == 1){ //liste des ingrédients
+        $ingredients = explode("|", $value);
+        $menuHTML = $menuHTML.'<ul class="listeIngredients">';
+        foreach($ingredients as $ingredient){
+            $menuHTML = $menuHTML.'<li><div>-'.$ingredient.'</div></li>';
+        }
+        $menuHTML = $menuHTML.'</ul>';
     }else{
         $menuHTML = $menuHTML.'<li><div>'.$value.'</div></li>';
     }

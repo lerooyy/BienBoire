@@ -127,10 +127,20 @@ li {
 .titreRecette {
     font-style: italic;
     font-weight: bold;
+    text-align: center;
     padding-bottom: 10px;
+    font-size: 1.5em;
 }
 
 .imageBoisson{
     height: 200px;
     width: auto;
+    text-align: center;
+    margin: auto;
+    display: flex;
+    padding: 20px;
+}
+
+.listeIngredients{
+    padding: 13px;
 }
