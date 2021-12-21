@@ -81,14 +81,13 @@ foreach($Recettes as $key => $value){
             foreach($tabRecettesNum as $num){
                 if($key == $num){
                     foreach($tabRecettesPartie as $partie){
-                        if($partie == $v){
+                        if($partie == $v && !str_contains($partie, "bacardi")){ //solution temporaire, puisque les 2 recettes "Bacardi" ont la même liste d'ingrédient
                             $foo = true;
                         }
                     }
                     if(!$foo){
                         $recetteComplete = $recetteComplete.$v;
                         array_push($tabRecettesPartie, $v);
-                        //array_push($tabRecettes, $v);
                     }
                 }
             }
@@ -97,9 +96,10 @@ foreach($Recettes as $key => $value){
     }
 }
 
+$imageBoisson;
 
 /**
- * On affiche les recettes
+ * On affiche les recettes et les images (si elles existent pour la boisson donnée)
  */
 $scriptJs = '<script type="text/javascript">';
 $menuHTML = '<ul>';
@@ -111,6 +111,18 @@ foreach($tabRecettes as $value) {
     }
     if($cpt == 0){ //titre
         $menuHTML = $menuHTML.'<li><div class="titreRecette">'.$value.'</div></li>';
+        $imageBoisson = str_replace(" ", "_", $value);
+        $imageBoisson = 'Photos/'.$imageBoisson.'.jpg';
+        if(is_file($imageBoisson)){
+            $menuHTML = $menuHTML.'<img class="imageBoisson" src='.$imageBoisson.'/>';
+        }
+    }else if($cpt == 1){ //liste des ingrédients
+        $ingredients = explode("|", $value);
+        $menuHTML = $menuHTML.'<ul class="listeIngredients">';
+        foreach($ingredients as $ingredient){
+            $menuHTML = $menuHTML.'<li><div>-'.$ingredient.'</div></li>';
+        }
+        $menuHTML = $menuHTML.'</ul>';
     }else{
         $menuHTML = $menuHTML.'<li><div>'.$value.'</div></li>';
     }
