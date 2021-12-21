@@ -34,6 +34,10 @@ function toggleAlimentSuivant(aliment) {
 
 }
 
+/**
+ * Permet d'afficher les recettes contenant un type d'élément (et ses sous-catégories)
+ * @param {*} aliment 
+ */
 function recettesContenant(aliment, typeIngredient){
     //var contenu = document.querySelector(".contenuPrincipal");
     $.post('recettes.php', {
