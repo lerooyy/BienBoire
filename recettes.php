@@ -88,7 +88,6 @@ foreach($Recettes as $key => $value){
                     if(!$foo){
                         $recetteComplete = $recetteComplete.$v;
                         array_push($tabRecettesPartie, $v);
-                        //array_push($tabRecettes, $v);
                     }
                 }
             }
@@ -97,6 +96,7 @@ foreach($Recettes as $key => $value){
     }
 }
 
+$imageBoisson;
 
 /**
  * On affiche les recettes
@@ -111,6 +111,11 @@ foreach($tabRecettes as $value) {
     }
     if($cpt == 0){ //titre
         $menuHTML = $menuHTML.'<li><div class="titreRecette">'.$value.'</div></li>';
+        $imageBoisson = str_replace(" ", "_", $value);
+        $imageBoisson = 'Photos/'.$imageBoisson.'.jpg';
+        if(is_file($imageBoisson)){
+            $menuHTML = $menuHTML.'<img src='.$imageBoisson.'/>';
+        }
     }else{
         $menuHTML = $menuHTML.'<li><div>'.$value.'</div></li>';
     }
