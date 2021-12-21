@@ -81,7 +81,7 @@ foreach($Recettes as $key => $value){
             foreach($tabRecettesNum as $num){
                 if($key == $num){
                     foreach($tabRecettesPartie as $partie){
-                        if($partie == $v){
+                        if($partie == $v && $k=='titre'){
                             $foo = true;
                         }
                     }
