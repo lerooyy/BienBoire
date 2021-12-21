@@ -72,32 +72,38 @@
                 <small>Message Erreur</small>
             </div>
             <div class="input">
-                <label for="Mot de Passe">Mot de Passe</label>
-                <input type="password" name="Mot de Passe" id="password" placeholder="Mot De Passe" />
+                <label for="mdp">Mot de Passe</label>
+                <input type="password" name="mdp" id="mdp" placeholder="Mot De Passe" />
                 <small>Message Erreur</small>
             </div>
             <div class="input">
-                <label for="Confirmer Mot de Passe">Confirmer Mot De Passe</label>
-                <input type="password" name="Confirmer Mot de Passe" id="c-password" placeholder="Confirmer Mot de Passe" />
+                <label for="c-mdp">Confirmer Mot De Passe</label>
+                <input type="password" name="c-mdp" id="c-mdp" placeholder="Confirmer Mot de Passe" />
                 <small>Message Erreur</small>
             </div>
+                <small class="erreurPrincipal">Message Erreur</small>
             <button>Créer Compte</button>
         </form>
     </div>
     <script>
         form.addEventListener("submit", (event) => {
+            event.preventDefault();
             var form = document.querySelector("#form");
             var user_id = document.querySelector("#user_id");
             var email = document.querySelector("#email");
-            var password = document.querySelector("#password");
-            var c_password = document.querySelector("#c-password");
-            event.preventDefault();
+            var mdp = document.querySelector("#mdp");
+            var c_mdp = document.querySelector("#c-mdp");
+            var nom = document.querySelector("#nom");
+            var prenom = document.querySelector("#prenom");
     
-            checkRequis([user_id, email, password, c_password]);
-            checkTaille(user_id, 4, 20);
-            checkTaille(password, 8, 30);
-            checkEmail(email);
-            checkMDPcorrespond(password, c_password);
+            if (checkRequis([user_id, email, mdp, c_mdp, nom, prenom]) &&
+            checkTaille(user_id, 3, 30) && checkTaille(mdp, 4, 30) &&
+            checkTaille(nom, 3, 30) && checkEmail(email) &&
+            checkTaille(prenom, 3, 30) && checkMDPcorrespond(mdp, c_mdp)) {
+                console.log("Formulaire Accepté");
+                postFormulaire();
+            } else {
+            }
         });
     
         document.querySelector(".gg-close").addEventListener("click", (event) => {
