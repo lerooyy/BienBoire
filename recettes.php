@@ -7,6 +7,10 @@ $typeIngredient = $_POST['typeIngredient']; //inutile pour le moment
 $tabIngredientsConcernés = array();
 
 
+/**
+ * On place les sous-ingrédients directs de l'aliment donné en paramètre
+ */
+
 $ingredient = $aliment;
 array_push($tabIngredientsConcernés, $aliment);
 foreach($Hierarchie as $key => $value){
@@ -21,6 +25,9 @@ foreach($Hierarchie as $key => $value){
     }
 }
 
+/**
+ * On place tous les sous-ingrédients des sous-ingrédients récupérés au dessus 
+ */
 foreach($Hierarchie as $key => $value){
     foreach($tabIngredientsConcernés as $ingre){
         if($key == $ingre){
@@ -43,6 +50,9 @@ foreach($Hierarchie as $key => $value){
     }
 }
 
+/**
+ * On récupère les numéros des recettes concernées (recettes contenant les ingrédients donnés)
+ */
 $tabRecettesNum = array();
 foreach ($Recettes as $key => $value) {
     foreach ($value as $k => $v) {
@@ -58,6 +68,9 @@ foreach ($Recettes as $key => $value) {
     }
 }
 
+/**
+ * On place dans tabRecettes les recettes complètes (récupérées grâce à leur clé) 
+ */
 $tabRecettes = array();
 $tabRecettesPartie = array();
 foreach($Recettes as $key => $value){
@@ -67,8 +80,8 @@ foreach($Recettes as $key => $value){
             $recetteComplete = "";
             foreach($tabRecettesNum as $num){
                 if($key == $num){
-                    foreach($tabRecettesPartie as $recette){
-                        if($recette == $v){
+                    foreach($tabRecettesPartie as $partie){
+                        if($partie == $v){
                             $foo = true;
                         }
                     }
@@ -84,6 +97,10 @@ foreach($Recettes as $key => $value){
     }
 }
 
+
+/**
+ * On affiche les recettes
+ */
 $scriptJs = '<script type="text/javascript">';
 $menuHTML = '<ul>';
 $cpt = 0;
@@ -92,7 +109,11 @@ foreach($tabRecettes as $value) {
     if($cpt == 0){
         $menuHTML = $menuHTML.'<div class="recette">';
     }
-    $menuHTML = $menuHTML.'<li><div>'.$value.'</div></li>';
+    if($cpt == 0){ //titre
+        $menuHTML = $menuHTML.'<li><div class="titreRecette">'.$value.'</div></li>';
+    }else{
+        $menuHTML = $menuHTML.'<li><div>'.$value.'</div></li>';
+    }
     $cpt++;
     if($cpt == 3){
         $cpt=0;
