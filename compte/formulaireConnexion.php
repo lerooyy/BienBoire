@@ -1,3 +1,15 @@
+<?php 
+session_start();
+if (!isset($_SESSION['connecte'])) {
+    header('Location: ../index.php');
+    exit();
+}
+
+if ($_SESSION['connecte'] == true) {
+    header('Location: ../index.php');
+    exit();
+}
+?>
 <!doctype html>
 <html lang="fr">
 <head>
@@ -35,7 +47,7 @@
         });
 
         document.querySelector("#creer_compte").addEventListener("click", (event) => {
-            window.location.href = "formulaireCreerCompte.html";
+            window.location.href = "formulaireCreerCompte.php";
         });
 
         document.querySelector(".gg-close").addEventListener("click", (event) => {

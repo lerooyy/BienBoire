@@ -1,3 +1,10 @@
+<?php
+if (!isset($_SESSION['connecte'])) {
+    header('Location: ../index.php');
+    exit();
+  }
+?>
+
 <!doctype html>
 <html lang="fr">
 <head>

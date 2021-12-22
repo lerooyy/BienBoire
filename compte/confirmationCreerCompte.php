@@ -1,4 +1,14 @@
 <?php
+session_start();
+if (!isset($_SESSION['connecte'])) {
+    header('Location: ../index.php');
+    exit();
+}
+
+if ($_SESSION['connecte'] == true) {
+    header('Location: ../index.php');
+    exit();
+}
 $confirmation = true;
 
 $user_id = $_POST['user_id'];
@@ -139,6 +149,8 @@ if ($confirmation) {
     }
 
 }
+
+mysqli_close($bdd);
 
 printf("%d\n", $confirmation);
 

@@ -1,3 +1,9 @@
+<?php 
+session_start();
+if (!isset($_SESSION['connecte'])) {
+    $_SESSION['connecte'] = false;
+}
+?>
 <!doctype html>
 <html lang="fr">
 <head>
@@ -30,6 +36,15 @@
 <body>
     <header class="baniere">
         <h1>Bien Boire</h1>
+        <?php
+            if (isset($_SESSION['connecte'])) {
+                if ($_SESSION['connecte'] == true) {
+                    if (isset($_SESSION['user_id'])) {
+                        echo '<div class="utilisateur_co">Bonjour <strong>'.$_SESSION['user_id'].'</strong> !</div>';
+                    }
+                }
+            }
+        ?>
         <nav class="menuPrincipal">
             <div class="boutons_menuP openMenu">Aliments</div>
             <div class="boutons_menuP b_recettes">Recettes</div>
@@ -53,10 +68,27 @@
     <section class="contenuPrincipal">
     </section>
     <script type="text/javascript">
-        document.querySelector(".b_compte").addEventListener('click', (event) => {
-            window.location.href = "compte/formulaireConnexion.html";
-        }, false);
+        <?php 
+        if (isset($_SESSION['connecte'])) {
 
+            if ($_SESSION['connecte'] == true) {
+                echo 'document.querySelector(".b_compte").addEventListener("click", (event) => {
+                    hideMenuAliment();
+                    chargerCompte();
+                }, false);';
+                
+            } else {
+                echo 'document.querySelector(".b_compte").addEventListener("click", (event) => {
+                    window.location.href = "compte/formulaireConnexion.php";
+                }, false);';
+            }
+
+        } else {
+            echo 'document.querySelector(".b_compte").addEventListener("click", (event) => {
+                window.location.href = "compte/formulaireConnexion.php";
+            }, false);';
+        }
+        ?>
         document.querySelector(".b_panier").addEventListener('click', (event) => {
             window.location.href = "panier/panier.php";
         }, false);

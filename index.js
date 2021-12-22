@@ -3,10 +3,10 @@
  */
 function toggleMenuAliments() {
     var menu = document.querySelector(".menuAliments");
-    if (menu.classList.contains("invisible")) {
-        menu.classList.remove("invisible");
+    if (menu.classList.contains("visible")) {
+        menu.classList.remove("visible");
     } else {
-        menu.classList.add("invisible");
+        menu.classList.add("visible");
     }
 
     var container = document.querySelector(".contenuPrincipal");
@@ -78,4 +78,21 @@ function createCookie(nom, valeur, jours) {
  */
 function ajouterRecette(recette){
     createCookie(recette, recette, 1);
+}
+
+function hideMenuAliment() {
+    var menu = document.querySelector(".menuAliments");
+    if (menu.classList.contains("visible")) {
+        menu.classList.remove("visible");
+    }
+
+    var container = document.querySelector(".contenuPrincipal");
+    if (container.classList.contains("menu-visible")) {
+        container.classList.remove("menu-visible");
+    }
+
+}
+
+function chargerCompte() {
+    $(".contenuPrincipal").load("compte/compte.php");
 }

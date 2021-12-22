@@ -1,4 +1,9 @@
 <?php
+session_start();
+if (!isset($_SESSION['connecte'])) {
+    header('Location: index.php');
+    exit();
+  }
 include 'Donnees.inc.php';
 
 $aliment = $_POST['aliment'];
