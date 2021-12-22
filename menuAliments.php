@@ -48,9 +48,17 @@ if ($elements == NULL || $elements == "") {
         toggleAlimentSuivant("Aliment");
     }, false);';
 
+    $scriptJs = $scriptJs.'document.querySelector("#p_Aliment").addEventListener("click", (event) => {
+        recettesContenant("Aliment", "'.$aliment.'");  
+    }, false);';
+
 } else if ($elements == "Aliment") {
     $scriptJs = $scriptJs.'document.querySelector("#p_Aliment").addEventListener("click", (event) => {
         toggleAlimentSuivant("Aliment");
+    }, false);';
+
+    $scriptJs = $scriptJs.'document.querySelector("#p_Aliment").addEventListener("click", (event) => {
+        recettesContenant("Aliment", "'.$aliment.'");  
     }, false);';
 
 } else {
@@ -61,12 +69,20 @@ if ($elements == NULL || $elements == "") {
         $scriptJs = $scriptJs.'document.querySelector("#p_'.$value_sans_espace.'").addEventListener("click", (event) => {
             toggleAlimentSuivant("'.$value.'");
         }, false);';
+
+        $scriptJs = $scriptJs.'document.querySelector("#p_'.$value_sans_espace.'").addEventListener("click", (event) => {
+            recettesContenant("'.$value.'", "'.$aliment.'");  
+        }, false);';
     }
 
     $aliment_se = str_replace(" ", "_", $aliment);
     $aliment_se = str_replace("'", "_", $aliment_se);
     $scriptJs = $scriptJs.'document.querySelector("#p_'.$aliment_se.'").addEventListener("click", (event) => {
         toggleAlimentSuivant("'.$aliment.'");
+    }, false);';
+
+    $scriptJs = $scriptJs.'document.querySelector("#p_'.$value_sans_espace.'").addEventListener("click", (event) => {
+        recettesContenant("'.$value.'", "'.$aliment.'");  
     }, false);';
 }
 
@@ -91,7 +107,8 @@ foreach ($Hierarchie as $key => $value) {
 /**
  * On produit le code HTML pour afficher tous les sous-aliments
  * de l'aliment et on associe à chaque sous-aliment une fonction pour
- * accéder à ses sous-aliments
+ * accéder à ses sous-aliments et une autre fonction pour afficher les
+ * recettes correspondantes
  */
 $menuHTML = $menuHTML.'<nav>';
 foreach($tabAliments as $value) {

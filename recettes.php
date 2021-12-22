@@ -44,7 +44,7 @@ foreach($Hierarchie as $key => $value){
                             array_push($tabIngredientsConcernés, $ing);
                         }
                     }
-                }   
+                }
             }
         }
     }
@@ -106,31 +106,36 @@ $menuHTML = '<ul>';
 $cpt = 0;
 foreach($tabRecettes as $value) {
     if($value != null && $value != ""){
-    if($cpt == 0){
-        $menuHTML = $menuHTML.'<div class="recette">';
-    }
-    if($cpt == 0){ //titre
-        $menuHTML = $menuHTML.'<li><div class="titreRecette">'.$value.'</div></li>';
-        $imageBoisson = str_replace(" ", "_", $value);
-        $imageBoisson = 'Photos/'.$imageBoisson.'.jpg';
-        if(is_file($imageBoisson)){
-            $menuHTML = $menuHTML.'<img class="imageBoisson" src='.$imageBoisson.'/>';
+        if($cpt == 0){
+            $menuHTML = $menuHTML.'<div class="recette">';
         }
-    }else if($cpt == 1){ //liste des ingrédients
-        $ingredients = explode("|", $value);
-        $menuHTML = $menuHTML.'<ul class="listeIngredients">';
-        foreach($ingredients as $ingredient){
-            $menuHTML = $menuHTML.'<li><div>-'.$ingredient.'</div></li>';
+        if($cpt == 0){ //titre
+            $menuHTML = $menuHTML.'<li><div class="titreRecette">'.$value.'</div></li>';
+
+            $recetteFavorite = str_replace(" ", "_", $value);
+            $recetteFavorite = str_replace("...","_",$recetteFavorite);
+            $menuHTML = $menuHTML.'<button onclick=ajouterRecette("'.$recetteFavorite.'") id="ajouterFavoris">Ajouter au panier</button>';
+
+            $imageBoisson = str_replace(" ", "_", $value);
+            $imageBoisson = 'Photos/'.$imageBoisson.'.jpg';
+            if(is_file($imageBoisson)){
+                $menuHTML = $menuHTML.'<img class="imageBoisson" src='.$imageBoisson.'/>';
+            }
+        }else if($cpt == 1){ //liste des ingrédients
+            $ingredients = explode("|", $value);
+            $menuHTML = $menuHTML.'<ul class="listeIngredients">';
+            foreach($ingredients as $ingredient){
+                $menuHTML = $menuHTML.'<li><div>-'.$ingredient.'</div></li>';
+            }
+            $menuHTML = $menuHTML.'</ul>';
+        }else{
+            $menuHTML = $menuHTML.'<li><div>'.$value.'</div></li>';
         }
-        $menuHTML = $menuHTML.'</ul>';
-    }else{
-        $menuHTML = $menuHTML.'<li><div>'.$value.'</div></li>';
-    }
-    $cpt++;
-    if($cpt == 3){
-        $cpt=0;
-        $menuHTML = $menuHTML.'</div>';
-    }
+        $cpt++;
+        if($cpt == 3){
+            $cpt=0;
+            $menuHTML = $menuHTML.'</div>';
+        }
     }
     
     /*$scriptJs = $scriptJs.'document.querySelector("#'.$value.'").addEventListener("click", (event) => {

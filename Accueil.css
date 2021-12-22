@@ -142,3 +142,9 @@ li {
 .listeIngredients{
     padding: 13px;
 }
+
+#ajouterFavoris{
+    cursor: pointer;
+    background-color: #c7be95;
+    padding: 5px;
+}
