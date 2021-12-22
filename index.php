@@ -1,4 +1,5 @@
 <?php 
+/*Ne pas ounlier de mettre compte.php, confirmationCreerCompte.php et connexion.php sur true */
 session_start();
 if (!isset($_SESSION['connecte'])) {
     $_SESSION['connecte'] = false;

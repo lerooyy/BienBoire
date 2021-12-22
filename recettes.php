@@ -124,7 +124,7 @@ foreach($tabRecettes as $value) {
             $imageBoisson = str_replace(" ", "_", $value);
             $imageBoisson = 'Photos/'.$imageBoisson.'.jpg';
             if(is_file($imageBoisson)){
-                $menuHTML = $menuHTML.'<img class="imageBoisson" src='.$imageBoisson.'/>';
+                $menuHTML = $menuHTML.'<img class="imageBoisson" src='.$imageBoisson.' />';
             }
         }else if($cpt == 1){ //liste des ingrédients
             $ingredients = explode("|", $value);
