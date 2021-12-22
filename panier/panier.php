@@ -12,11 +12,16 @@
     <div class="contenant">
         <?php //récupérer recettes dans les cookies
             //echo $_COOKIE['recette'];
+            $recette;
             foreach($_COOKIE as $key => $value){
-                $recette = str_replace("_"," ", $value);
-                echo $recette;
-                echo "<br>";
+                $recetteFavorite = str_replace("_"," ", $value);
+                $recette = $recette.'<div class="recetteFavorite">';
+                $recette = $recette.'<button onclick=supprimerRecette("'.$key.'")>Supprimer du panier</button>';
+                $recette = $recette.$recetteFavorite;
+                $recette = $recette.'</div>';
+                $recette = $recette.'<br>';
             }
+            echo $recette;
         ?>
     </div>
     <script>

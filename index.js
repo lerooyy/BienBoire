@@ -77,5 +77,5 @@ function createCookie(nom, valeur, jours) {
  * @param {*} recette
  */
 function ajouterRecette(recette){
-    createCookie(recette+"1", recette, 1);
+    createCookie(recette, recette, 1);
 }
