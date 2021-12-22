@@ -6,7 +6,7 @@ $mdp = $_POST['mdp'];
 $connexion = true;
 
 /* Connexion à la base de donnée en local ou en ligne */
-$surLeWeb = false; // mettre sur true lorsque on est sur le serveur
+$surLeWeb = true; // mettre sur true lorsque on est sur le serveur
 
 if ($surLeWeb) {
     $bdd = mysqli_connect('db5005953828.hosting-data.io', 'dbu1391417', 'Wa$Sr89K!', 'dbs4989374', 3306);
