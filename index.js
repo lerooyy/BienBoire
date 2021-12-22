@@ -96,3 +96,12 @@ function hideMenuAliment() {
 function chargerCompte() {
     $(".contenuPrincipal").load("compte/compte.php");
 }
+/**
+ * Trie les recettes en fonction des éléments rentrés dans la barre de recherche
+ */
+function filtering(){
+    var input = document.getElementById('searchInput');
+    var filter = input.value;
+    
+    recettesContenant(filter);
+}

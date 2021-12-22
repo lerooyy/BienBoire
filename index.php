@@ -65,6 +65,11 @@ if (!isset($_SESSION['connecte'])) {
             recettesContenant("Aliment","");
         }, false);
     </script>
+
+    <div class="topnav">
+        <input type="text" id="searchInput" onkeyup=filtering() placeholder="Rechercher..">
+    </div> 
+
     <section class="contenuPrincipal">
     </section>
     <script type="text/javascript">

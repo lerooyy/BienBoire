@@ -208,4 +208,8 @@ li {
     display: block;
     margin-bottom: 50px;
     font-size: 2em;
+
+.topnav{
+    text-align: center;
+    padding: 10px;
 }
