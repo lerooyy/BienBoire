@@ -79,3 +79,13 @@ function createCookie(nom, valeur, jours) {
 function ajouterRecette(recette){
     createCookie(recette, recette, 1);
 }
+
+/**
+ * Trie les recettes en fonction des éléments rentrés dans la barre de recherche
+ */
+function filtering(){
+    var input = document.getElementById('searchInput');
+    var filter = input.value;
+    
+    recettesContenant(filter);
+}
