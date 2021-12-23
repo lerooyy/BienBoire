@@ -15,7 +15,7 @@ $Sql="
 		USE $base;
 		CREATE TABLE Utilisateurs (user_id VARCHAR(30) PRIMARY KEY,
          mdp VARCHAR(30) NOT NULL, 
-         nom VARCHAR(30) NOT NULL, 
+         nom VARCHAR(30) NOT NULL,
          prenom VARCHAR(30) NOT NULL, 
          sexe INT NOT NULL, 
          adresse VARCHAR(250), 

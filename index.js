@@ -29,7 +29,9 @@ function toggleAlimentSuivant(aliment) {
         'parents': document.querySelector(".parent").innerHTML,
         'elements': document.querySelector(".parent").textContent
     }, function(data) {
-        $('.menuAliments').html(data);
+        if (data != 0) {
+            $('.menuAliments').html(data);
+        }
     });
 
 }
@@ -96,12 +98,21 @@ function hideMenuAliment() {
 function chargerCompte() {
     $(".contenuPrincipal").load("compte/compte.php");
 }
+
+/**
+ * Met en majuscule la première lettre d'un mot et le reste en minuscule
+ * @param {*} string
+ */
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
+}
+
 /**
  * Trie les recettes en fonction des éléments rentrés dans la barre de recherche
  */
 function filtering(){
-    var input = document.getElementById('searchInput');
-    var filter = input.value;
+    var input = document.getElementsByClassName('instant-search__input')[0];
+    var filter = capitalizeFirstLetter(input.value);
     
     recettesContenant(filter);
 }

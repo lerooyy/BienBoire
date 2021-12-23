@@ -21,8 +21,11 @@ li {
 
 .baniere {
     padding: 20px 0 0 0;
-    background-color: #bb6a4e;
+    /*background-color: #bb6a4e;*/
     box-shadow:  0 2px 10px rgba(0,0,0,0.3);  
+
+    background: rgb(255,207,0);
+    background: linear-gradient(90deg, rgba(255,207,0,1) 1%, rgba(121,9,9,1) 61%, rgba(2,0,36,1) 100%);
 }
 
 .baniere h1 {
@@ -59,10 +62,11 @@ li {
     width: 20vw;
     transform: translateX(-150%);
     transition: transform 500ms;
-    background-color: #7e4450;
-    overflow-wrap: break-word;
-    hyphens: auto;
+    /*background-color: #7e4450;*/
+    background: rgb(133,72,27);
+    background: linear-gradient(0deg, rgba(133,72,27,1) 0%, rgba(131,58,20,1) 15%, rgba(153,45,16,1) 27%, rgba(255,225,37,1) 100%);
     box-shadow:  0 2px 10px rgba(0,0,0,0.3); 
+    height: 100%;
 }
 
 .contenuPrincipal {
@@ -216,7 +220,54 @@ li {
 
 }
 
-.topnav {
-    text-align: center;
+.instant-search {
+    position: relative;
+    max-width: 1250px;
+    padding-left: 50%;
+    padding-top: 10px;
+}
+
+.instant-search__input-container {
     padding: 10px;
+    padding-top: 30px;
+}
+
+.instant-search__input {
+    font-family: sans-serif;
+}
+
+.instant-search,
+.instant-search__input-container {
+    border-radius: 5px;
+}
+
+
+.instant-search,
+.instant-search * {
+    transition: background 0.15s, box-shadow 0.15s;
+}
+
+.instant-search:focus-within {
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+}
+
+.instant-search__input-container {
+    display: flex;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 6px;
+    background: #ca9564;
+}
+
+.instant-search__input-container:focus-within {
+    background: #eeeeee;
+}
+
+.instant-search__input {
+    flex-grow: 1;
+    border: none;
+    outline: none;
+    width: 100%;
+    padding: 0 6px;
+    background: transparent;
 }

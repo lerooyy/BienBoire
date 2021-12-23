@@ -11,6 +11,7 @@ if (!isset($_SESSION['connecte'])) {
   <meta charset="utf-8">
   <title>Bien Boire</title>
   <link rel="stylesheet" href="Accueil.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script type="text/javascript">
     function toggleMenuAliments() {
@@ -67,9 +68,12 @@ if (!isset($_SESSION['connecte'])) {
         }, false);
     </script>
 
-    <div class="topnav">
-        <input type="text" id="searchInput" onkeyup=filtering() placeholder="Rechercher..">
+    <div class="instant-search">
+    <div class="instant-search__input-container">
+        <input type="text" class="instant-search__input" onkeyup=filtering() placeholder="Rechercher..">
+        <i class="material-icons instant-search__icon">search</i>
     </div> 
+    </div>
 
     <section class="contenuPrincipal">
     </section>
