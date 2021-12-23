@@ -140,7 +140,7 @@ if ($confirmation) {
     $stmt = mysqli_prepare($bdd, "INSERT INTO Utilisateurs VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);");
     
     if ($stmt) {
-        mysqli_stmt_bind_param($stmt, "ssssissisis", $user_id, $mdp, $nom, $prenom, $sexe, 
+        mysqli_stmt_bind_param($stmt, "ssssissssss", $user_id, $mdp, $nom, $prenom, $sexe, 
         $adresse, $ville, $code_postal, $email, $phone, $d_naissance);
         $ret = mysqli_stmt_execute($stmt);
         echo "$ret";

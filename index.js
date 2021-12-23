@@ -80,7 +80,9 @@ function createCookie(nom, valeur, jours) {
  * @param {*} recette
  */
 function ajouterRecette(recette){
-    createCookie(recette, recette, 1);
+    $.post('panier/ajouterAuPanier.php', {
+        'r_id': recette
+    });
 }
 
 function hideMenuAliment() {

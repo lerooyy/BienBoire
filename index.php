@@ -1,8 +1,12 @@
 <?php 
-/*Ne pas ounlier de mettre compte.php, confirmationCreerCompte.php et connexion.php sur true */
+/* Ne pas ounlier de mettre compte.php, confirmationCreerCompte.php, connexion.php
+ * et ajouterAuPanier.php, panier sur true */
 session_start();
 if (!isset($_SESSION['connecte'])) {
     $_SESSION['connecte'] = false;
+}
+if (!$_SESSION['connecte'] == true) {
+    $_SESSION['panier'] = array();
 }
 
 $_SESSION['firstToggle'] = 'Aliment';
@@ -51,7 +55,7 @@ $_SESSION['firstToggle'] = 'Aliment';
         <nav class="menuPrincipal">
             <div class="boutons_menuP openMenu">Aliments</div>
             <div class="boutons_menuP b_recettes">Recettes</div>
-            <div class="boutons_menuP b_panier">Panier</div>
+            <div class="boutons_menuP b_panier">Panier - <em class="nb_recettesF"><?php echo count($_SESSION['panier']);?></em></div>
             <div class="boutons_menuP b_compte">Compte</div>
         </nav>
     </header>
@@ -65,6 +69,10 @@ $_SESSION['firstToggle'] = 'Aliment';
         }, false);
 
         document.querySelector(".openMenu").addEventListener('click', (event) => {
+            recettesContenant("Aliment","");
+        }, false);
+
+        document.querySelector(".b_recettes").addEventListener('click', (event) => {
             recettesContenant("Aliment","");
         }, false);
     </script>
