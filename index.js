@@ -29,7 +29,10 @@ function toggleAlimentSuivant(aliment) {
         'parents': document.querySelector(".parent").innerHTML,
         'elements': document.querySelector(".parent").textContent
     }, function(data) {
-        $('.menuAliments').html(data);
+
+        if (data != 0) {
+            $('.menuAliments').html(data);
+        }
     });
 
 }

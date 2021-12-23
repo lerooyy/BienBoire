@@ -81,6 +81,7 @@ mysqli_close($bdd);
     <table class="infos_compte">
     <tr><td class="titre">Nom d'Utilisateur :</td><td class="valeur"><?php echo $user_id ?></td></tr>
     <tr><td class="titre">Mot de Passe :</td><td class="valeur"><?php echo $mdp ?></dtdiv></tr>
+    <tr><td class="titre">Nom :</td><td class="valeur"><?php echo $nom ?></td></tr>
     <tr><td class="titre">Prenom :</td><td class="valeur"><?php echo $prenom ?></td></tr>
     <tr><td class="titre">Sexe :</td><td class="valeur"><?php echo $sexe ?></td></tr>
     <tr><td class="titre">Adresse :</td><td class="valeur"><?php echo $adresse ?></td></tr>

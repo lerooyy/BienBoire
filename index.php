@@ -4,6 +4,8 @@ session_start();
 if (!isset($_SESSION['connecte'])) {
     $_SESSION['connecte'] = false;
 }
+
+$_SESSION['firstToggle'] = 'Aliment';
 ?>
 <!doctype html>
 <html lang="fr">
@@ -58,7 +60,7 @@ if (!isset($_SESSION['connecte'])) {
     </div>
     <script type="text/javascript">
         document.querySelector(".openMenu").addEventListener('click', (event) => {
-            toggleAlimentSuivant("Aliment");
+            toggleAlimentSuivant("");
             toggleMenuAliments();
         }, false);
 

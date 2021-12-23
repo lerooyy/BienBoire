@@ -5,8 +5,12 @@ if (!isset($_SESSION['connecte'])) {
     exit();
   }
 include 'Donnees.inc.php';
-
-$aliment = $_POST['aliment'];
+if (!empty($_SESSION['firstToggle'])) {
+    $aliment = $_SESSION['firstToggle'];
+    $_SESSION['firstToggle'] = "";
+} else {
+    $aliment = $_POST['aliment'];
+}
 $parents = $_POST['parents'];
 $elements = $_POST['elements'];
 
@@ -132,6 +136,10 @@ foreach($tabAliments as $value) {
 $menuHTML = $menuHTML.'</nav>';
 $scriptJs = $scriptJs.'</script>';
 
-echo $menuHTML;
-echo $scriptJs;
+if ($aliment == "") {
+    echo "0";
+} else {
+    echo $menuHTML;
+    echo $scriptJs;
+}
 ?>
