@@ -53,6 +53,7 @@ if ($stmt) {
     $connexion = false;
 }
 
+session_unset();
 $_SESSION['connecte'] = $connexion;
 
 if ($connexion) {

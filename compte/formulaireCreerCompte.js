@@ -158,7 +158,7 @@ function postFormulaire() {
             document.querySelector(".erreurPrincipal").classList.add("erreur");
         } else if (data.includes("1", 0)) {
             document.querySelector(".erreurPrincipal").classList.add("success");
-            document.location.href = "formulaireConnexion.html";
+            document.location.href = "formulaireConnexion.php";
         } else {
             document.querySelector(".erreurPrincipal").innerText = "Erreur Création compte."
             document.querySelector(".erreurPrincipal").classList.add("erreur");
