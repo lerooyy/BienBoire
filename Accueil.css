@@ -24,8 +24,8 @@ li {
     /*background-color: #bb6a4e;*/
     box-shadow:  0 2px 10px rgba(0,0,0,0.3);  
 
-    background: rgb(255,207,0);
-    background: linear-gradient(90deg, rgba(255,207,0,1) 1%, rgba(121,9,9,1) 61%, rgba(2,0,36,1) 100%);
+    background: rgb(255, 136, 0);
+    background: linear-gradient(90deg, rgba(255,207,0,1) 1%, rgba(121,9,9,1) 61%, rgba(124,9,9,1) 100%);
 }
 
 .baniere h1 {
