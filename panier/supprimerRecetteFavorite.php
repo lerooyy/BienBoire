@@ -2,20 +2,17 @@
 session_start();
 
 if (!isset($_SESSION['connecte'])) {
-    header('Location: "../index.php');
+    header('Location: ../index.php');
     exit();
 }
 
 $r_id = $_POST['r_id'];
 
-/**
- * Si un utilisateur est connecté on ajoute alors toutes les recettes favoris dans la bdd
- * Sinon on les ajoutes juste dans une variable session
- */
 
+//Si un utilisateur est connecté on retire la racette de la table concernée
 if ($_SESSION['connecte'] == true) {    
 
-    /* Connexion à la base de donnée en local ou en ligne */
+    // Connexion à la base de donnée en local ou en ligne 
     $surLeWeb = false; // mettre sur true lorsque on est sur le serveur
 
     if ($surLeWeb) {
@@ -30,8 +27,8 @@ if ($_SESSION['connecte'] == true) {
         }
     }
 
-    /* On regarde si la recette fait  déja parties des favoris */
-    $ajouterAuFavoris = true;
+    // On regarde si la recette fait  déja parties des favoris
+    $retirerDesFavorites = true;
 
     $stmt = mysqli_prepare($bdd, "SELECT * RecettesFavorites WHERE user_id=? AND r_id=?;");
 
@@ -42,13 +39,13 @@ if ($_SESSION['connecte'] == true) {
         mysqli_stmt_fetch($stmt);
 
         if ($col1 == $user_id || $col2 == $r_id) {
-            $ajouterAuFavoris = false;
+            $retirerDesFavorites = false;
         }
     }
 
-    /* On va insérer une nouvelle recette favorite dans le tableau correspondant */
-    if ($ajouterAuFavoris) {
-        $stmt = mysqli_prepare($bdd, "INSERT INTO RecettesFavorites VALUES(?, ?);");
+    // On va retirer la recette des favorites
+    if ($retirerDesFavorites) {
+        $stmt = mysqli_prepare($bdd, "DELETE FROM RecettesFavorites WHERE user_id=? AND r_id=?;");
         
         if ($stmt) {
             mysqli_stmt_bind_param($stmt, "ss", $_SESSION['user_id'], $r_id);
@@ -59,10 +56,23 @@ if ($_SESSION['connecte'] == true) {
     mysqli_close($bdd);
 }
 
-/* Que l'utilisateur soit connecté ou pas on ajoute la recette au panier */
-if (!in_array($r_id, $_SESSION['panier'])) {
-    array_push($_SESSION['panier'], $r_id);
+$tab = array();
+// Que l'utilisateur soit connecté ou pas on retire la recette du panier
+if (in_array($r_id, $_SESSION['panier'])) {
+    foreach($_SESSION['panier'] as $value) {
+        
+        if ($value != $r_id) {
+            array_push($tab, $value);
+            echo $value;
+        }
+    }
+
+    unset($_SESSION['panier']);
+    $_SESSION['panier'] = array();
+
+    foreach($tab as $value) {
+        array_push($_SESSION['panier'], $value);
+    }
 }
 
-echo count($_SESSION['panier']);
 ?>

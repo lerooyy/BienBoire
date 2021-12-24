@@ -1,11 +1,9 @@
 <?php 
 /* Ne pas ounlier de mettre compte.php, confirmationCreerCompte.php, connexion.php
- * et ajouterAuPanier.php, panier sur true */
+ * ajouterAuPanier.php, panier.php, installBddBienBoire.php, supprimerRecetteFavorite.php sur true */
 session_start();
 if (!isset($_SESSION['connecte'])) {
     $_SESSION['connecte'] = false;
-}
-if (!$_SESSION['connecte'] == true) {
     $_SESSION['panier'] = array();
 }
 
@@ -17,6 +15,7 @@ $_SESSION['firstToggle'] = 'Aliment';
   <meta charset="utf-8">
   <title>Bien Boire</title>
   <link rel="stylesheet" href="Accueil.css">
+  <link href='https://css.gg/math-plus.css' rel='stylesheet'>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script type="text/javascript">
     function toggleMenuAliments() {
@@ -82,6 +81,12 @@ $_SESSION['firstToggle'] = 'Aliment';
     </div> 
 
     <section class="contenuPrincipal">
+        <div class="recette">
+        <h1 class="titreRecette">Bienvenue sur BienBoire</h1>
+        </br>
+    </br>
+        <div class="intro">Trouve toutes les idées, pour faire de délicieuses boissons<div>
+        </div>
     </section>
     <script type="text/javascript">
         <?php 

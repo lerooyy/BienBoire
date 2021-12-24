@@ -17,6 +17,7 @@ body {
 }
 
 .recette {
+    position: relative;
     padding: 20px;
     margin: 0 0 40px 0;
     background-color: #c07e27;
@@ -35,11 +36,68 @@ body {
     padding: 13px;
 }
 
-body h1 {
+body header {
     display: block;
     border: 2px #bb6a4e solid;
     text-align: center;
-    padding: 20px 0 20px 0;
+    padding: 0 0 20px 0;
     box-shadow:  0 2px 10px rgba(0,0,0,0.3); 
     background-color: #bb6a4e;
+}
+
+.gg-arrow-left-r {
+    display: block;
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    transition: transform 150ms;
+    cursor: pointer;
+}
+
+.gg-arrow-left-r:hover{
+    transform: scale(1.5);
+}
+
+.bouton {
+    background-color: #bb6a4e;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    padding: 12px 0 0 0;
+    box-shadow:  3px 0 8px rgba(0,0,0,0.3);
+    position: absolute;
+    left: 100%;
+    top: 0%;
+    transition: background-color 200ms, box-shadow 200ms;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    cursor: pointer;
+}
+
+.bouton:hover {
+    background-color: #7e4836;
+    box-shadow:  3px 0 3px rgba(0,0,0,0.3);
+}
+
+.bouton:active {
+    background-color: #7e4836;
+    box-shadow:  3px 0 3px rgba(0,0,0,0.3);
+}
+
+.gg-math-minus {
+    padding: 2px;
+    margin: 6px 0 0 11px;
+}
+
+.imageBoisson{
+    height: 150px;
+    width: auto;
+    text-align: center;
+    margin: auto;
+    display: flex;
+    border: 2px #864834 solid;
+    border-radius: 10px;
+
+    margin-top: 50px;
+    margin-bottom: 50px;
 }

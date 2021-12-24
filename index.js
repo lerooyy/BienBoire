@@ -82,6 +82,8 @@ function createCookie(nom, valeur, jours) {
 function ajouterRecette(recette){
     $.post('panier/ajouterAuPanier.php', {
         'r_id': recette
+    }, function (data) {
+        document.querySelector(".nb_recettesF").innerText = data;
     });
 }
 

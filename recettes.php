@@ -129,7 +129,7 @@ foreach($tabRecettes as $value) {
 
         $recetteFavorite = str_replace(" ", "_", $value);
         $recetteFavorite = str_replace("...","_",$recetteFavorite);
-        $menuHTML = $menuHTML.'<button onclick=ajouterRecette("'.$numRecettes[$cle].'") id="ajouterFavoris">Ajouter au panier</button>';
+        $menuHTML = $menuHTML.'<div tooltip="Ajouter au panier" class="ajouterFavoris" onclick=ajouterRecette("'.$numRecettes[$cle].'")><i class="gg-math-plus"></i></div>';
         $cle++;
 
         $imageBoisson = str_replace(" ", "_", $value);

@@ -118,6 +118,7 @@ li {
 }
 
 .recette {
+    position: relative;
     padding: 20px;
     margin: 0 0 40px 0;
     background-color: #c07e27;
@@ -149,10 +150,30 @@ li {
     padding: 13px;
 }
 
-#ajouterFavoris{
+.ajouterFavoris {
+    background-color: #bb6a4e;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    padding: 12px 0 0 0;
+    box-shadow:  3px 0 8px rgba(0,0,0,0.3);
+    position: absolute;
+    left: 100%;
+    top: 0%;
+    transition: background-color 200ms, box-shadow 200ms;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
     cursor: pointer;
-    background-color: #c7be95;
-    padding: 5px;
+}
+
+.ajouterFavoris:hover {
+    background-color: #7e4836;
+    box-shadow:  3px 0 3px rgba(0,0,0,0.3);
+}
+
+.ajouterFavoris:active {
+    background-color: #7e4836;
+    box-shadow:  3px 0 3px rgba(0,0,0,0.3);
 }
 
 .utilisateur_co {
@@ -220,4 +241,14 @@ li {
 .topnav {
     text-align: center;
     padding: 10px;
+}
+
+.intro {
+    text-align: center;
+}
+
+.gg-math-plus {
+    position: absolute;
+    top: 30%;
+    left: 30%;
 }

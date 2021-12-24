@@ -7,8 +7,9 @@ if (!isset($_SESSION['connecte'])) {
 
 $codeHtml = "";
 
+
 if (count($_SESSION['panier']) == 0) {
-    $codeHtml = '<div class="recettes">Vous n\'avez aucune recettes favorites ! </br> Vous pouvez les ajouter directement à l\'aide de la liste des recettes !</div>';
+    $codeHtml = '<div class="recette">Vous n\'avez aucune recettes favorites ! </br> Vous pouvez les ajouter directement à l\'aide de la liste des recettes !</div>';
 } else {
 
     // Connexion à la base de donnée en local ou en ligne
@@ -36,6 +37,7 @@ if (count($_SESSION['panier']) == 0) {
     $ingredients = "";
     $preparation = "";
     $r_index = "";
+    $imageBoisson="";
 
     for ($i = 0; $i < $nb_recettes; $i++) {
         $r_id = "";
@@ -60,6 +62,13 @@ if (count($_SESSION['panier']) == 0) {
 
         $codeHtml = $codeHtml.'<div class="recette" id="'.$r_id.'">';
         $codeHtml = $codeHtml.'<h2 class="titre">'.$titre.'</h2>';
+        $codeHtml = $codeHtml.'<div class="bouton" onclick=supprimerRecette("'.$r_id.'")><i class="gg-math-minus"></i></div>';
+
+        $imageBoisson = str_replace(" ", "_", $titre);
+        $imageBoisson = '../Photos/'.$imageBoisson.'.jpg';
+        if(is_file($imageBoisson)){
+            $codeHtml = $codeHtml.'<img class="imageBoisson" src='.$imageBoisson.' />';
+        }
         $codeHtml = $codeHtml.'<ul class="ingredients">';
         foreach ($tabIngredients as $ingredient) {
             $codeHtml = $codeHtml.'<li>'.$ingredient.'</li>';
@@ -69,9 +78,9 @@ if (count($_SESSION['panier']) == 0) {
         $codeHtml = $codeHtml.'</div>';
 
     }
-}
 
     mysqli_close($bdd);
+}
 ?>
 
 <!doctype html>
@@ -79,14 +88,23 @@ if (count($_SESSION['panier']) == 0) {
 <head>
   <meta charset="utf-8">
   <link rel="stylesheet" href="panier.css">
+  <link href='https://css.gg/arrow-left-r.css' rel='stylesheet'>
+  <link href='https://css.gg/math-minus.css' rel='stylesheet'>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script src="panier.js"></script>
 </head>
 <body>
-<h1>Mes recettes</h1>
+    <header>
+        <i class="gg-arrow-left-r"></i>
+        <h1>Mes recettes</h1>
+    </header>
 <div class="contenant">
     <?php echo $codeHtml; ?>
 </div>
-    <script></script>
+    <script>
+        document.querySelector('.gg-arrow-left-r ').addEventListener("click", (event) => {
+            document.location.href = "../index.php";
+        });
+    </script>
 </body>
 </html>
