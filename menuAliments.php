@@ -58,7 +58,7 @@ if ($elements == NULL || $elements == "") {
     }, false);';
 
     $scriptJs = $scriptJs.'document.querySelector("#p_Aliment").addEventListener("click", (event) => {
-        recettesContenant("Aliment", "'.$aliment.'");  
+        recettesContenant("Aliment");  
     }, false);';
 
 } else if ($elements == "Aliment") {
@@ -67,7 +67,7 @@ if ($elements == NULL || $elements == "") {
     }, false);';
 
     $scriptJs = $scriptJs.'document.querySelector("#p_Aliment").addEventListener("click", (event) => {
-        recettesContenant("Aliment", "'.$aliment.'");  
+        recettesContenant("Aliment");  
     }, false);';
 
 } else {
@@ -80,7 +80,7 @@ if ($elements == NULL || $elements == "") {
         }, false);';
 
         $scriptJs = $scriptJs.'document.querySelector("#p_'.$value_sans_espace.'").addEventListener("click", (event) => {
-            recettesContenant("'.$value.'", "'.$aliment.'");  
+            recettesContenant("'.$value.'");  
         }, false);';
     }
 
@@ -91,7 +91,7 @@ if ($elements == NULL || $elements == "") {
     }, false);';
 
     $scriptJs = $scriptJs.'document.querySelector("#p_'.$value_sans_espace.'").addEventListener("click", (event) => {
-        recettesContenant("'.$value.'", "'.$aliment.'");  
+        recettesContenant("'.$value.'");  
     }, false);';
 }
 
@@ -129,7 +129,7 @@ foreach($tabAliments as $value) {
     }, false);';
 
     $scriptJs = $scriptJs.'document.querySelector("#'.$value_sans_espace.'").addEventListener("click", (event) => {
-        recettesContenant("'.$value.'", "'.$aliment.'");  
+        recettesContenant("'.$value.'");  
     }, false);';
 }
 

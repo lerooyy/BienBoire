@@ -15,7 +15,11 @@ $_SESSION['firstToggle'] = 'Aliment';
   <meta charset="utf-8">
   <title>Bien Boire</title>
   <link rel="stylesheet" href="Accueil.css">
+<<<<<<< HEAD
   <link href='https://css.gg/math-plus.css' rel='stylesheet'>
+=======
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+>>>>>>> 10d9675a299f77d7ea937931b25e42a421e7398a
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script type="text/javascript">
     function toggleMenuAliments() {
@@ -58,6 +62,15 @@ $_SESSION['firstToggle'] = 'Aliment';
             <div class="boutons_menuP b_compte">Compte</div>
         </nav>
     </header>
+
+    <div class="instant-search">
+        <div class="instant-search__input-container">
+            <input type="text" class="instant-search__input" onkeyup=filtering() placeholder="Rechercher..">
+            <i class="material-icons instant-search__icon">search</i>
+        </div> 
+    </div>
+
+
     <div class="menuAliments">
     <div class="parent"></div>
     </div>
@@ -75,10 +88,6 @@ $_SESSION['firstToggle'] = 'Aliment';
             recettesContenant("Aliment","");
         }, false);
     </script>
-
-    <div class="topnav">
-        <input type="text" id="searchInput" onkeyup=filtering() placeholder="Rechercher..">
-    </div> 
 
     <section class="contenuPrincipal">
         <div class="recette">
@@ -114,5 +123,7 @@ $_SESSION['firstToggle'] = 'Aliment';
             window.location.href = "panier/panier.php";
         }, false);
     </script>
+
+    
 </body>
 </html>

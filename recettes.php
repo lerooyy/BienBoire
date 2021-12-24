@@ -6,7 +6,7 @@ if (!isset($_SESSION['connecte'])) {
   }
 include 'Donnees.inc.php';
 
-$aliment = $_POST['aliment'];
+$aliments = $_POST['aliments'];
 $typeIngredient = $_POST['typeIngredient']; //inutile pour le moment
 
 $tabIngredientsConcernés = array();
@@ -16,14 +16,16 @@ $tabIngredientsConcernés = array();
  * On place les sous-ingrédients directs de l'aliment donné en paramètre
  */
 
-$ingredient = $aliment;
-array_push($tabIngredientsConcernés, $aliment);
-foreach($Hierarchie as $key => $value){
-    if($key == $ingredient){
-        foreach($value as $k => $v){
-            if($k == 'sous-categorie'){
-                foreach($v as $i => $ing){
-                    array_push($tabIngredientsConcernés, $ing);
+foreach($aliments as $aliment){
+    $ingredient = $aliment;
+    array_push($tabIngredientsConcernés, $aliment);
+    foreach($Hierarchie as $key => $value){
+        if($key == $ingredient){
+            foreach($value as $k => $v){
+                if($k == 'sous-categorie'){
+                    foreach($v as $i => $ing){
+                        array_push($tabIngredientsConcernés, $ing);
+                    }
                 }
             }
         }

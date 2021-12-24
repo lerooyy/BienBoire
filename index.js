@@ -29,7 +29,6 @@ function toggleAlimentSuivant(aliment) {
         'parents': document.querySelector(".parent").innerHTML,
         'elements': document.querySelector(".parent").textContent
     }, function(data) {
-
         if (data != 0) {
             $('.menuAliments').html(data);
         }
@@ -39,13 +38,12 @@ function toggleAlimentSuivant(aliment) {
 
 /**
  * Permet d'afficher les recettes contenant un type d'élément (et ses sous-catégories)
- * @param {*} aliment 
+ * @param {*}
  */
-function recettesContenant(aliment, typeIngredient){
+function recettesContenant(){
     //var contenu = document.querySelector(".contenuPrincipal");
     $.post('recettes.php', {
-        'aliment':  aliment,
-        'typeIngredient': typeIngredient
+        'aliments':  arguments
     }, function(data) {
         $('.contenuPrincipal').html(data);
     });
@@ -103,12 +101,28 @@ function hideMenuAliment() {
 function chargerCompte() {
     $(".contenuPrincipal").load("compte/compte.php");
 }
+
+/**
+ * Met en majuscule la première lettre d'un mot et le reste en minuscule
+ * @param {*} string
+ */
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
+}
+
 /**
  * Trie les recettes en fonction des éléments rentrés dans la barre de recherche
  */
 function filtering(){
-    var input = document.getElementById('searchInput');
+    var input = document.getElementsByClassName('instant-search__input')[0];
     var filter = input.value;
+
+    var aliments = filter.split(' ');
+    var copieAliments = [];
+
+    for(var i = 0; i<aliments.length; i++){
+        copieAliments.push(capitalizeFirstLetter(aliments[i]));
+    }
     
-    recettesContenant(filter);
+    recettesContenant(copieAliments[0], copieAliments[1], copieAliments[2], copieAliments[3], copieAliments[4]);
 }
