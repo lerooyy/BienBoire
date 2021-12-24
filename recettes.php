@@ -6,7 +6,7 @@ if (!isset($_SESSION['connecte'])) {
   }
 include 'Donnees.inc.php';
 
-$aliment = $_POST['aliment'];
+$aliments = $_POST['aliments'];
 $typeIngredient = $_POST['typeIngredient']; //inutile pour le moment
 
 $tabIngredientsConcernés = array();
@@ -16,14 +16,16 @@ $tabIngredientsConcernés = array();
  * On place les sous-ingrédients directs de l'aliment donné en paramètre
  */
 
-$ingredient = $aliment;
-array_push($tabIngredientsConcernés, $aliment);
-foreach($Hierarchie as $key => $value){
-    if($key == $ingredient){
-        foreach($value as $k => $v){
-            if($k == 'sous-categorie'){
-                foreach($v as $i => $ing){
-                    array_push($tabIngredientsConcernés, $ing);
+foreach($aliments as $aliment){
+    $ingredient = $aliment;
+    array_push($tabIngredientsConcernés, $aliment);
+    foreach($Hierarchie as $key => $value){
+        if($key == $ingredient){
+            foreach($value as $k => $v){
+                if($k == 'sous-categorie'){
+                    foreach($v as $i => $ing){
+                        array_push($tabIngredientsConcernés, $ing);
+                    }
                 }
             }
         }
@@ -76,9 +78,11 @@ foreach ($Recettes as $key => $value) {
 /**
  * On place dans tabRecettes les recettes complètes (récupérées grâce à leur clé) 
  */
+$numRecettes = array();
 $tabRecettes = array();
 $tabRecettesPartie = array();
 foreach($Recettes as $key => $value){
+    $i = 0;
     foreach($value as $k => $v){
         if($k != 'index'){
             $foo = false;
@@ -96,8 +100,15 @@ foreach($Recettes as $key => $value){
                     }
                 }
             }
-            array_push($tabRecettes, $recetteComplete);
+            if ($recetteComplete != "" && $recetteComplete != NULL) {
+                array_push($tabRecettes, $recetteComplete);
+                if ($i == 0) {
+                    array_push($numRecettes, $key);
+                }
+     
+            }  
         }
+        $i++;
     }
 }
 
@@ -109,40 +120,41 @@ $imageBoisson;
 $scriptJs = '<script type="text/javascript">';
 $menuHTML = '<ul>';
 $cpt = 0;
+$cle = 0;
 foreach($tabRecettes as $value) {
-    if($value != null && $value != ""){
-        if($cpt == 0){
-            $menuHTML = $menuHTML.'<div class="recette">';
-        }
-        if($cpt == 0){ //titre
-            $menuHTML = $menuHTML.'<li><div class="titreRecette">'.$value.'</div></li>';
-
-            $recetteFavorite = str_replace(" ", "_", $value);
-            $recetteFavorite = str_replace("...","_",$recetteFavorite);
-            $menuHTML = $menuHTML.'<button onclick=ajouterRecette("'.$recetteFavorite.'") id="ajouterFavoris">Ajouter au panier</button>';
-
-            $imageBoisson = str_replace(" ", "_", $value);
-            $imageBoisson = 'Photos/'.$imageBoisson.'.jpg';
-            if(is_file($imageBoisson)){
-                $menuHTML = $menuHTML.'<img class="imageBoisson" src='.$imageBoisson.' />';
-            }
-        }else if($cpt == 1){ //liste des ingrédients
-            $ingredients = explode("|", $value);
-            $menuHTML = $menuHTML.'<ul class="listeIngredients">';
-            foreach($ingredients as $ingredient){
-                $menuHTML = $menuHTML.'<li><div>-'.$ingredient.'</div></li>';
-            }
-            $menuHTML = $menuHTML.'</ul>';
-        }else{
-            $menuHTML = $menuHTML.'<li><div>'.$value.'</div></li>';
-        }
-        $cpt++;
-        if($cpt == 3){
-            $cpt=0;
-            $menuHTML = $menuHTML.'</div>';
-        }
+    if($cpt == 0){
+        $menuHTML = $menuHTML.'<div class="recette">';
     }
-    
+
+    if($cpt == 0){ //titre
+        $menuHTML = $menuHTML.'<li><div class="titreRecette">'.$value.'</div></li>';
+
+        $recetteFavorite = str_replace(" ", "_", $value);
+        $recetteFavorite = str_replace("...","_",$recetteFavorite);
+        $menuHTML = $menuHTML.'<button onclick=ajouterRecette("'.$numRecettes[$cle].'") id="ajouterFavoris">Ajouter au panier</button>';
+        $cle++;
+
+        $imageBoisson = str_replace(" ", "_", $value);
+        $imageBoisson = 'Photos/'.$imageBoisson.'.jpg';
+        if(is_file($imageBoisson)){
+            $menuHTML = $menuHTML.'<img class="imageBoisson" src='.$imageBoisson.' />';
+        }
+    }else if($cpt == 1){ //liste des ingrédients
+        $ingredients = explode("|", $value);
+        $menuHTML = $menuHTML.'<ul class="listeIngredients">';
+        foreach($ingredients as $ingredient){
+            $menuHTML = $menuHTML.'<li><div>-'.$ingredient.'</div></li>';
+        }
+        $menuHTML = $menuHTML.'</ul>';
+    }else{
+        $menuHTML = $menuHTML.'<li><div>'.$value.'</div></li>';
+    }
+
+    $cpt++;
+    if($cpt == 3){
+        $cpt=0;
+        $menuHTML = $menuHTML.'</div>';
+    }
     /*$scriptJs = $scriptJs.'document.querySelector("#'.$value.'").addEventListener("click", (event) => {
         recettesContenant("'.$value.'");
     }, false);';*/

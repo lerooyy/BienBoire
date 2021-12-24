@@ -5,8 +5,12 @@ if (!isset($_SESSION['connecte'])) {
     exit();
   }
 include 'Donnees.inc.php';
-
-$aliment = $_POST['aliment'];
+if (!empty($_SESSION['firstToggle'])) {
+    $aliment = $_SESSION['firstToggle'];
+    $_SESSION['firstToggle'] = "";
+} else {
+    $aliment = $_POST['aliment'];
+}
 $parents = $_POST['parents'];
 $elements = $_POST['elements'];
 
@@ -54,7 +58,7 @@ if ($elements == NULL || $elements == "") {
     }, false);';
 
     $scriptJs = $scriptJs.'document.querySelector("#p_Aliment").addEventListener("click", (event) => {
-        recettesContenant("Aliment", "'.$aliment.'");  
+        recettesContenant("Aliment");  
     }, false);';
 
 } else if ($elements == "Aliment") {
@@ -63,7 +67,7 @@ if ($elements == NULL || $elements == "") {
     }, false);';
 
     $scriptJs = $scriptJs.'document.querySelector("#p_Aliment").addEventListener("click", (event) => {
-        recettesContenant("Aliment", "'.$aliment.'");  
+        recettesContenant("Aliment");  
     }, false);';
 
 } else {
@@ -76,7 +80,7 @@ if ($elements == NULL || $elements == "") {
         }, false);';
 
         $scriptJs = $scriptJs.'document.querySelector("#p_'.$value_sans_espace.'").addEventListener("click", (event) => {
-            recettesContenant("'.$value.'", "'.$aliment.'");  
+            recettesContenant("'.$value.'");  
         }, false);';
     }
 
@@ -87,7 +91,7 @@ if ($elements == NULL || $elements == "") {
     }, false);';
 
     $scriptJs = $scriptJs.'document.querySelector("#p_'.$value_sans_espace.'").addEventListener("click", (event) => {
-        recettesContenant("'.$value.'", "'.$aliment.'");  
+        recettesContenant("'.$value.'");  
     }, false);';
 }
 
@@ -125,13 +129,17 @@ foreach($tabAliments as $value) {
     }, false);';
 
     $scriptJs = $scriptJs.'document.querySelector("#'.$value_sans_espace.'").addEventListener("click", (event) => {
-        recettesContenant("'.$value.'", "'.$aliment.'");  
+        recettesContenant("'.$value.'");  
     }, false);';
 }
 
 $menuHTML = $menuHTML.'</nav>';
 $scriptJs = $scriptJs.'</script>';
 
-echo $menuHTML;
-echo $scriptJs;
+if ($aliment == "") {
+    echo "0";
+} else {
+    echo $menuHTML;
+    echo $scriptJs;
+}
 ?>

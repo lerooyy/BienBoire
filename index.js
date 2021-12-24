@@ -38,13 +38,12 @@ function toggleAlimentSuivant(aliment) {
 
 /**
  * Permet d'afficher les recettes contenant un type d'élément (et ses sous-catégories)
- * @param {*} aliment 
+ * @param {*}
  */
-function recettesContenant(aliment, typeIngredient){
+function recettesContenant(){
     //var contenu = document.querySelector(".contenuPrincipal");
     $.post('recettes.php', {
-        'aliment':  aliment,
-        'typeIngredient': typeIngredient
+        'aliments':  arguments
     }, function(data) {
         $('.contenuPrincipal').html(data);
     });
@@ -79,7 +78,9 @@ function createCookie(nom, valeur, jours) {
  * @param {*} recette
  */
 function ajouterRecette(recette){
-    createCookie(recette, recette, 1);
+    $.post('panier/ajouterAuPanier.php', {
+        'r_id': recette
+    });
 }
 
 function hideMenuAliment() {
@@ -112,7 +113,14 @@ function capitalizeFirstLetter(string) {
  */
 function filtering(){
     var input = document.getElementsByClassName('instant-search__input')[0];
-    var filter = capitalizeFirstLetter(input.value);
+    var filter = input.value;
+
+    var aliments = filter.split(' ');
+    var copieAliments = [];
+
+    for(var i = 0; i<aliments.length; i++){
+        copieAliments.push(capitalizeFirstLetter(aliments[i]));
+    }
     
-    recettesContenant(filter);
+    recettesContenant(copieAliments[0], copieAliments[1], copieAliments[2], copieAliments[3], copieAliments[4]);
 }
