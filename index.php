@@ -60,6 +60,15 @@ $_SESSION['firstToggle'] = 'Aliment';
             <div class="boutons_menuP b_compte">Compte</div>
         </nav>
     </header>
+
+    <div class="instant-search">
+        <div class="instant-search__input-container">
+            <input type="text" class="instant-search__input" onkeyup=filtering() placeholder="Rechercher..">
+            <i class="material-icons instant-search__icon">search</i>
+        </div> 
+    </div>
+
+
     <div class="menuAliments">
     <div class="parent"></div>
     </div>
@@ -77,13 +86,6 @@ $_SESSION['firstToggle'] = 'Aliment';
             recettesContenant("Aliment","");
         }, false);
     </script>
-
-    <div class="instant-search">
-    <div class="instant-search__input-container">
-        <input type="text" class="instant-search__input" onkeyup=filtering() placeholder="Rechercher..">
-        <i class="material-icons instant-search__icon">search</i>
-    </div> 
-    </div>
 
     <section class="contenuPrincipal">
     </section>
@@ -113,5 +115,7 @@ $_SESSION['firstToggle'] = 'Aliment';
             window.location.href = "panier/panier.php";
         }, false);
     </script>
+
+    
 </body>
 </html>

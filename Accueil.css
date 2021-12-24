@@ -222,9 +222,10 @@ li {
 
 .instant-search {
     position: relative;
-    max-width: 1250px;
-    padding-left: 50%;
-    padding-top: 10px;
+    max-width: 300px;
+    padding-left: 30px;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
 .instant-search__input-container {
