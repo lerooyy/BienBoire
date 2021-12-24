@@ -15,11 +15,8 @@ $_SESSION['firstToggle'] = 'Aliment';
   <meta charset="utf-8">
   <title>Bien Boire</title>
   <link rel="stylesheet" href="Accueil.css">
-<<<<<<< HEAD
   <link href='https://css.gg/math-plus.css' rel='stylesheet'>
-=======
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
->>>>>>> 10d9675a299f77d7ea937931b25e42a421e7398a
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script type="text/javascript">
     function toggleMenuAliments() {
