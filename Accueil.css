@@ -251,7 +251,6 @@ li {
 
 .instant-search__input-container {
     padding: 10px;
-<<<<<<< HEAD
 }
 
 .intro {
@@ -262,17 +261,21 @@ li {
     position: absolute;
     top: 30%;
     left: 30%;
-=======
     padding-top: 30px;
 }
 
 .instant-search__input {
     font-family: sans-serif;
+    border: 1px solid transparent;
+    background-color: #f1f1f1;
+    padding: 10px;
+    font-size: 16px;
 }
 
 .instant-search,
 .instant-search__input-container {
     border-radius: 5px;
+    position: relative;
 }
 
 
@@ -304,5 +307,32 @@ li {
     width: 100%;
     padding: 0 6px;
     background: transparent;
->>>>>>> 10d9675a299f77d7ea937931b25e42a421e7398a
 }
+
+.instant-search__input[type=text] {
+    width: 100%;
+}
+
+.autocomplete-items {
+    position: absolute;
+    border: 1px solid #d4d4d4;
+    border-bottom: none;
+    border-top: none;
+    z-index: 99;
+    top: 100%;
+    left: 0;
+    right: 0;
+  }
+  .autocomplete-items div {
+    padding: 10px;
+    cursor: pointer;
+    background-color: #fff;
+    border-bottom: 1px solid #d4d4d4;
+  }
+  .autocomplete-items div:hover {
+    background-color: #e9e9e9;
+  }
+  .autocomplete-active {
+    background-color: DodgerBlue !important;
+    color: #ffffff;
+  }  

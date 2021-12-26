@@ -8,6 +8,15 @@ if (!isset($_SESSION['connecte'])) {
 }
 
 $_SESSION['firstToggle'] = 'Aliment';
+
+
+include 'Donnees.inc.php';
+
+$tousLesIngredients = array();
+foreach($Hierarchie as $key => $value){
+    array_push($tousLesIngredients, $key);
+}
+
 ?>
 <!doctype html>
 <html lang="fr">
@@ -60,13 +69,16 @@ $_SESSION['firstToggle'] = 'Aliment';
         </nav>
     </header>
 
-    <div class="instant-search">
+    <form autocomplete="off" class="instant-search">
         <div class="instant-search__input-container">
-            <input type="text" class="instant-search__input" onkeyup=filtering() placeholder="Rechercher..">
+            <input type="text" class="instant-search__input" onkeyup=filtering() placeholder="Rechercher un aliment..">
             <i class="material-icons instant-search__icon">search</i>
         </div> 
-    </div>
-
+    </form>
+    <script>
+        var aliments = <?php echo json_encode($tousLesIngredients, JSON_INVALID_UTF8_IGNORE); ?>;
+        autocomplete(document.getElementsByClassName("instant-search__input")[0], aliments);
+    </script> 
 
     <div class="menuAliments">
     <div class="parent"></div>
